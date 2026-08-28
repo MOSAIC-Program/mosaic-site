@@ -19,6 +19,9 @@
   @keyframes tesseraIn { from { opacity: 0; } to { opacity: 1; } }
   @media (prefers-reduced-motion: reduce) { .tessera-fade { animation: none !important; opacity: 1 !important; } }
   @media (max-width: 900px) { .tessera-fade { display: none; } }
+  summary.bio-trigger { cursor: pointer; list-style: none; }
+  summary.bio-trigger::-webkit-details-marker { display: none; }
+  summary.bio-trigger:hover { text-decoration: underline; text-underline-offset: 3px; }
 </style>
 </helmet>
 
@@ -73,17 +76,29 @@
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(28px, 5vw, 48px);">
 
-        <div style="display: flex; gap: 18px; align-items: center;">
-          <img src="./images/ronen-tamari.png" alt="Ronen Tamari" style="flex: none; width: 72px; height: 72px; object-fit: cover; border-radius: 50%;">
-          <div>
-            <h3 style="margin: 0; font-family: Spectral, Georgia, serif; font-weight: 600; font-size: 21px; line-height: 1.2;"><a href="https://ronentk.me/" target="_blank" rel="noopener noreferrer" style="color: #1F3A6E;">Ronen Tamari</a></h3>
+        <div>
+          <div style="display: flex; gap: 18px; align-items: center;">
+            <img src="./images/ronen-tamari.png" alt="Ronen Tamari" style="flex: none; width: 72px; height: 72px; object-fit: cover; border-radius: 50%;">
+            <div>
+              <h3 style="margin: 0; font-family: Spectral, Georgia, serif; font-weight: 600; font-size: 21px; line-height: 1.2;"><a href="https://ronentk.me/" target="_blank" rel="noopener noreferrer" style="color: #1F3A6E;">Ronen Tamari</a></h3>
+              <details style="margin-top: 8px;">
+                <summary class="bio-trigger" style="font-size: 14.5px; font-weight: 500; letter-spacing: 0.02em; color: #B4552F;">Bio</summary>
+                <p style="margin: 10px 0 0; padding-top: 10px; border-top: 1px solid rgba(43,39,36,0.14); font-size: 14px; line-height: 1.6; color: #6E665E;">Ronen is a collective intelligence researcher and entrepreneur. He completed an Open Science fellowship at the Astera Institute, and is a co-founder of multiple metascience startups and initiatives, including Cosmik and ATProto Science. Ronen holds a PhD in AI from the Hebrew University of Jerusalem.</p>
+              </details>
+            </div>
           </div>
         </div>
 
-        <div style="display: flex; gap: 18px; align-items: center;">
-          <img src="./images/francisco-carvalho.png" alt="Francisco Carvalho" style="flex: none; width: 72px; height: 72px; object-fit: cover; border-radius: 50%;">
-          <div>
-            <h3 style="margin: 0; font-family: Spectral, Georgia, serif; font-weight: 600; font-size: 21px; line-height: 1.2;"><a href="https://xiqo.substack.com/" target="_blank" rel="noopener noreferrer" style="color: #1F3A6E;">Francisco Carvalho</a></h3>
+        <div>
+          <div style="display: flex; gap: 18px; align-items: center;">
+            <img src="./images/francisco-carvalho.png" alt="Francisco Carvalho" style="flex: none; width: 72px; height: 72px; object-fit: cover; border-radius: 50%;">
+            <div>
+              <h3 style="margin: 0; font-family: Spectral, Georgia, serif; font-weight: 600; font-size: 21px; line-height: 1.2;"><a href="https://xiqo.substack.com/" target="_blank" rel="noopener noreferrer" style="color: #1F3A6E;">Francisco Carvalho</a></h3>
+              <details style="margin-top: 8px;">
+                <summary class="bio-trigger" style="font-size: 14.5px; font-weight: 500; letter-spacing: 0.02em; color: #B4552F;">Bio</summary>
+                <p style="margin: 10px 0 0; padding-top: 10px; border-top: 1px solid rgba(43,39,36,0.14); font-size: 14px; line-height: 1.6; color: #6E665E;">Francisco is a collective intelligence researcher and tools-for-thought builder. He has worked at METR and the EU AI Office, and founded the Twitter Community Archive, an open data commons for a distributed community of independent researchers. Francisco&rsquo;s work is supported by Vitalik Buterin and the Survival and Flourishing Fund.</p>
+              </details>
+            </div>
           </div>
         </div>
 
