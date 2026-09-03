@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Source+Sans+3:ital,wght@0,300..600;1,400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: oklch(96.2% 0.014 84); }
+  [data-theme="light"] {
+    --ground: oklch(96.2% 0.014 84);
+    --ground-2: oklch(93.4% 0.016 82);
+    --ink: oklch(25% 0.018 258);
+    --muted: oklch(45% 0.02 80);
+    --lapis: oklch(39% 0.125 258);
+    --terracotta: oklch(50% 0.11 42);
+    --gold: oklch(74% 0.12 86);
+    --gold-ink: oklch(48% 0.095 80);
+    --grout: oklch(70% 0.014 70);
+    --hair: oklch(84% 0.014 78);
+    --prov-bg: oklch(93% 0.03 48);
+    --prov-line: oklch(72% 0.07 45);
+  }
+  [data-theme="dark"] {
+    --ground: oklch(20.5% 0.015 258);
+    --ground-2: oklch(25% 0.016 258);
+    --ink: oklch(93% 0.012 85);
+    --muted: oklch(73% 0.014 82);
+    --lapis: oklch(66% 0.11 258);
+    --terracotta: oklch(70% 0.10 42);
+    --gold: oklch(80% 0.12 88);
+    --gold-ink: oklch(84% 0.11 88);
+    --grout: oklch(42% 0.014 70);
+    --hair: oklch(34% 0.014 258);
+    --prov-bg: oklch(30% 0.04 45);
+    --prov-line: oklch(50% 0.07 45);
+  }
+  a { color: var(--lapis); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--gold-ink); }
+  ::selection { background: oklch(74% 0.12 86 / 0.35); }
+  @keyframes tessera-settle {
+    from { opacity: 0; transform: translateY(7px) rotate(-5deg) scale(0.93); }
+    to { opacity: var(--op, 1); transform: none; }
+  }
+  svg[data-settle-ready] polygon { opacity: 0; }
+  svg[data-settled] polygon { animation: tessera-settle 0.75s cubic-bezier(.2,.75,.3,1) both; transform-box: fill-box; transform-origin: 50% 50%; }
+  @media (prefers-reduced-motion: reduce) {
+    svg[data-settle-ready] polygon, svg[data-settled] polygon { opacity: var(--op, 1); animation: none; }
+  }
+</style>
+</helmet>
+<div ref="{{ rootRef }}" data-theme="{{ theme }}" style="background: var(--ground); color: var(--ink); font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 20px; line-height: 1.65; min-height: 100vh; overflow-x: hidden;">
+
+  <header style="display: flex; flex-direction: column; gap: 14px; padding: 20px clamp(20px, 5vw, 48px); max-width: 1240px; margin: 0 auto; border-bottom: 1px solid var(--hair);">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+    <span style="font-family: Newsreader, Georgia, serif; font-size: 1.0625rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink);">Mosaic</span>
+    <button type="button" onClick="{{ toggleTheme }}" aria-label="{{ themeAria }}" style="display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--hair); border-radius: 2px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 11px; cursor: pointer;" style-hover="border-color: var(--gold); color: var(--gold-ink);">
+      <span aria-hidden="true" style="width: 9px; height: 9px; background: var(--gold); transform: rotate(8deg); display: block;"></span>
+      {{ themeLabel }}
+    </button>
+    </div>
+    <nav aria-label="Links">
+      <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px clamp(16px, 2.4vw, 30px);">
+        <li style="display: flex; align-items: center; gap: 6px;"><a href="#" style="font-size: 1rem; color: var(--gold-ink); text-decoration: underline;">Who are we</a><span data-provisional="true" title="URL not supplied yet" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.625rem; color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: 2px; padding: 0.2em 0.35em;">&lt;url&gt;</span></li>
+        <li style="display: flex; align-items: center; gap: 6px;"><a href="#" style="font-size: 1rem; color: var(--gold-ink); text-decoration: underline;">Read the concept note</a><span data-provisional="true" title="URL not supplied yet" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.625rem; color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: 2px; padding: 0.2em 0.35em;">&lt;url&gt;</span></li>
+        <li style="display: flex; align-items: center; gap: 6px;"><a href="#" style="font-size: 1rem; color: var(--gold-ink); text-decoration: underline;">Watch the BiTS Pitch</a><span data-provisional="true" title="URL not supplied yet" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.625rem; color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: 2px; padding: 0.2em 0.35em;">&lt;url&gt;</span></li>
+        <li style="display: flex; align-items: center; gap: 6px;"><a href="#" style="font-size: 1rem; color: var(--gold-ink); text-decoration: underline;">Partners</a><span data-provisional="true" title="URL not supplied yet" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.625rem; color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: 2px; padding: 0.2em 0.35em;">&lt;url&gt;</span></li>
+        <li style="display: flex; align-items: center; gap: 6px;"><a href="#" style="font-size: 1rem; color: var(--gold-ink); text-decoration: underline;">Connect</a><span data-provisional="true" title="URL not supplied yet" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.625rem; color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: 2px; padding: 0.2em 0.35em;">&lt;url&gt;</span></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section aria-labelledby="mosaic-hero" style="position: relative; padding: clamp(48px, 11vh, 120px) clamp(20px, 5vw, 48px) clamp(64px, 12vh, 140px);">
+    <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none;">{{ heroField }}</div>
+    <div style="position: relative; max-width: 1240px; margin: 0 auto;">
+      <h1 id="mosaic-hero" style="font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: clamp(3.5rem, 15vw, 9.5rem); line-height: 0.95; letter-spacing: -0.02em; margin: 0; color: var(--ink);">MOSAIC</h1>
+      <p style="font-family: Newsreader, Georgia, serif; font-weight: 300; font-size: clamp(1.25rem, 3.4vw, 2.1rem); line-height: 1.3; letter-spacing: -0.01em; color: var(--muted); margin: clamp(16px, 3vw, 28px) 0 0; max-width: 26ch; text-wrap: pretty;">Modular Open Science, AI &amp; Collective Intelligence</p>
+      <p style="margin: clamp(28px, 5vw, 48px) 0 0; display: inline-flex; align-items: center; gap: 12px; font-size: clamp(0.875rem, 1.4vw, 1rem); letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink); border-top: 2px solid var(--gold); padding-top: 14px;">
+        <span aria-hidden="true" style="width: 10px; height: 10px; background: var(--gold); transform: rotate(10deg); display: block; flex: 0 0 auto;"></span>
+        Developed through the <a href="https://www.renaissancephilanthropy.org/bits" style="color: var(--ink); text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 4px;">BiTS program</a> at Renaissance Philanthropy
+      </p>
+    </div>
+  </section>
+
+  <div aria-hidden="true" style="opacity: 0.075; padding: 0 0 clamp(40px, 8vh, 88px);">{{ dividerA }}</div>
+
+  <section style="padding: 0 clamp(20px, 5vw, 48px) clamp(48px, 9vh, 104px);">
+    <div style="width: 100%; max-width: 68ch; margin: 0 auto;">
+      <h2 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.14; letter-spacing: -0.018em; margin: 0 0 1.3rem; text-wrap: pretty;">Coordination is science’s biggest bottleneck.</h2>
+      <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">AI is making individual scientists dramatically more productive. But the coordination system that turns individual work into collective knowledge — how we share, evaluate, and build on each other's research — has barely evolved at all. As a result, science has no way to metabolize individual productivity into collective progress, and increasingly no way to tell progress from plausible noise.</p>
+    </div>
+  </section>
+
+  <section style="padding: 0 clamp(20px, 5vw, 48px) clamp(48px, 9vh, 104px);">
+    <div style="width: 100%; max-width: 68ch; margin: 0 auto;">
+      <h2 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.14; letter-spacing: -0.018em; margin: 0 0 1.3rem; text-wrap: pretty;">Coordination requires a medium. The medium of science hasn’t changed in centuries, and it is breaking.</h2>
+      <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">The internet revolutionized how knowledge is created and shared. Today's AI is only possible due to the vast repositories of human knowledge it made openly readable. Social media demonstrates the vast potential of real-time global-scale discourse. But science has barely moved: the paper is still the only recognized unit of science and has not meaningfully changed in centuries. Papers bear the full load of the scientific process — disseminating results, communicating ideas, evaluating quality, assigning credit — but they are ill-suited for the speed, scale and complexity of today’s challenges.</p>
+    </div>
+  </section>
+
+  <section style="padding: 0 clamp(20px, 5vw, 48px) clamp(48px, 9vh, 104px);">
+    <div style="width: 100%; max-width: 68ch; margin: 0 auto;">
+      <h2 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.14; letter-spacing: -0.018em; margin: 0 0 1.3rem; text-wrap: pretty;">The next medium for science is networked.</h2>
+      <p style="margin: 0 0 1.35em; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">In 2011, Michael Nielsen's <em style="font-style: italic;">Reinventing Discovery</em> argued that the internet and open online collaboration could democratize and accelerate science by applying the coordination patterns behind successful large scale projects like Wikipedia and Linux: composable and modular micro-contributions, low contribution barriers, networked in the open, at enormous scale. Despite some initial encouraging examples like preprint servers and citizen science projects, Nielsen's own assessment was that we had fallen far short of the potential for networked science. It still holds.</p>
+      <p style="font-family: Newsreader, Georgia, serif; font-style: italic; font-weight: 400; font-size: clamp(1.3rem, 2.6vw, 1.75rem); line-height: 1.4; color: var(--lapis); margin: 0; text-wrap: pretty;">The idea wasn't wrong. But the right substrate didn't exist.</p>
+    </div>
+  </section>
+
+  <section style="padding: 0 clamp(20px, 5vw, 48px) clamp(48px, 9vh, 104px);">
+    <div style="width: 100%; max-width: 68ch; margin: 0 auto;">
+      <h2 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.14; letter-spacing: -0.018em; margin: 0 0 1.3rem; text-wrap: pretty;">MOSAIC is a program to build it.</h2>
+      <p style="margin: 0 0 1.35em; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">MOSAIC (Modular Open Science, AI &amp; Collective Intelligence) is an R&amp;D program to realize the vision of networked science. MOSAIC was incubated at Renaissance Philanthropy’s Big if True Science accelerator (BiTS), a fellowship for scientists and technologists to design ambitious R&amp;D programs.</p>
+      <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">Our Big if True hypothesis is that an intentionally designed networked research medium will enable humans and agents to solve crucial coordination challenges and radically accelerate breakthroughs.</p>
+    </div>
+  </section>
+
+  <div aria-hidden="true" style="opacity: 0.075; padding: clamp(8px, 2vh, 24px) 0 clamp(40px, 8vh, 88px);">{{ dividerB }}</div>
+
+  <section style="padding: 0 clamp(20px, 5vw, 48px) clamp(32px, 6vh, 64px);">
+    <div style="width: 100%; max-width: 68ch; margin: 0 auto;">
+      <h2 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.14; letter-spacing: -0.018em; margin: 0 0 1.3rem;">Why now?</h2>
+      <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">Three mutually reinforcing developments are converging to create a unique opportunity:</p>
+    </div>
+  </section>
+
+  <section style="padding: 0 clamp(20px, 5vw, 48px) clamp(24px, 5vh, 56px);">
+    <ol style="list-style: none; margin: 0 auto; padding: 0; width: 100%; max-width: 78ch; display: grid; gap: clamp(40px, 7vh, 76px);">
+      <li style="display: flex; gap: clamp(20px, 4vw, 40px); align-items: flex-start; flex-wrap: wrap;">
+        <div aria-hidden="true" style="flex: 0 0 auto; width: clamp(84px, 12vw, 116px);">{{ conv1 }}</div>
+        <div style="flex: 1 1 320px; min-width: 0;">
+          <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;"><span style="font-family: Newsreader, Georgia, serif; font-size: 1.15em; color: var(--lapis);">1)</span> <strong style="font-weight: 600; color: var(--ink);">Modular research tools</strong> (such as Discourse Graphs, OXA and Nanopublications) are making it possible to represent the actual process of research (hypotheses, questions, critiques, evidence, etc) as reusable, machine-readable units rather than burying them inside monolithic papers. Early Discourse Graph deployments are showing promising evidence that these tools help researchers think and collaborate better.</p>
+        </div>
+      </li>
+      <li style="display: flex; gap: clamp(20px, 4vw, 40px); align-items: flex-start; flex-wrap: wrap;">
+        <div aria-hidden="true" style="flex: 0 0 auto; width: clamp(84px, 12vw, 116px);">{{ conv2 }}</div>
+        <div style="flex: 1 1 320px; min-width: 0;">
+          <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;"><span style="font-family: Newsreader, Georgia, serif; font-size: 1.15em; color: var(--terracotta);">(2)</span> <strong style="font-weight: 600; color: var(--ink);">Protocol-based social networks</strong> such as AT Protocol (powering the Bluesky platform) are a credible alternative to closed platforms, and large science communities have already moved there. Scientific micro-contributions already happen on social media — discussion, data sharing, and meaningful real-time evaluation of research. However, we lack the means to recognize these contributions as such: data is locked in closed platforms, and rich social media discourse is flattened into ”research mentions”. Protocols are what make the difference, as they enable not just rebuilding Science Twitter, but shaping whole new apps and services for research, on decentralized infrastructure that is resilient to capture.</p>
+        </div>
+      </li>
+      <li style="display: flex; gap: clamp(20px, 4vw, 40px); align-items: flex-start; flex-wrap: wrap;">
+        <div aria-hidden="true" style="flex: 0 0 auto; width: clamp(84px, 12vw, 116px);">{{ conv3 }}</div>
+        <div style="flex: 1 1 320px; min-width: 0;">
+          <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;"><span style="font-family: Newsreader, Georgia, serif; font-size: 1.15em; color: var(--gold-ink);">3)</span> <strong style="font-weight: 600; color: var(--ink);">AI that can contribute.</strong> AI progress makes networked science even more relevant. AI systems can now work across the full research lifecycle but lack the scaffolding to do it traceably and verifiably. Social networks provide essential human trust, curation and interaction. Modular research provides the right interface for agentic science and high fidelity data in the form of structured reasoning traces. Papers fail models as both inputs and outputs: neither machine-readable nor faithful records of how research happens, so AI trained on them inherits a distorted picture of science; and cheap enough for agents to generate that review has nothing smaller or more verifiable to anchor against.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <div aria-hidden="true" style="opacity: 0.16; padding: clamp(24px, 5vh, 56px) 0 clamp(44px, 9vh, 96px);">{{ interlock }}</div>
+
+  <section style="padding: 0 clamp(20px, 5vw, 48px) clamp(48px, 9vh, 104px);">
+    <div style="width: 100%; max-width: 68ch; margin: 0 auto;">
+      <h2 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.14; letter-spacing: -0.018em; margin: 0 0 1.3rem; text-wrap: pretty;">Networked research won't emerge on its own, but cutting edge philanthropy is uniquely positioned to catalyze it.</h2>
+      <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">Networked research, which thrives on openness and large-scale collaborative ecosystems, has also long been blocked by an infrastructure funding gap. Academia and small non-profits lack the engineering capacity to build it. Startups need near-term returns and, like the incumbent platforms, depend on moats and data enclosure. Catalytic philanthropy, such as deployed by Renaissance Philanthropy, is the unlock: it can fund at the scale infrastructure requires, tolerate long time horizons that the market cannot, and build a field rather than just products.</p>
+    </div>
+  </section>
+
+  <section style="padding: 0 clamp(20px, 5vw, 48px) clamp(48px, 9vh, 104px);">
+    <div style="width: 100%; max-width: 68ch; margin: 0 auto clamp(36px, 6vh, 64px);">
+      <h2 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.14; letter-spacing: -0.018em; margin: 0 0 1.3rem;">We've already started.</h2>
+      <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">Between us, we've spent over a decade building the products, ecosystems, and networks that MOSAIC is rooted in.</p>
+    </div>
+    <div style="width: 100%; max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: clamp(28px, 4vw, 48px) clamp(28px, 5vw, 64px);">
+      <article style="border-top: 1px solid var(--hair); padding-top: 20px;">
+        <div aria-hidden="true" style="width: 56px; margin-bottom: 16px;">{{ mark1 }}</div>
+        <h3 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: 1.45rem; line-height: 1.25; margin: 0 0 0.7rem;">Discourse Graphs</h3>
+        <p style="margin: 0; font-size: 1.0625rem; line-height: 1.6;"><span data-provisional="true" title="Unresolved placeholder" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; line-height: 1.5; color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: 2px; padding: 0.15em 0.4em;">&lt;Discourse Graphs are deployed across X research labs, with Y structured contributions in the past year.&gt;</span></p>
+      </article>
+      <article style="border-top: 1px solid var(--hair); padding-top: 20px;">
+        <div aria-hidden="true" style="width: 56px; margin-bottom: 16px;">{{ mark2 }}</div>
+        <h3 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: 1.45rem; line-height: 1.25; margin: 0 0 0.7rem;">Cosmik/Semble</h3>
+        <p style="margin: 0; font-size: 1.0625rem; line-height: 1.6; text-wrap: pretty;">We also co-founded Cosmik where we’re building a curation network for researchers called Semble. Semble already has more than a thousand users and an active integration with Discourse Graphs, providing early evidence for social apps as a strong adoption driver for networked research.</p>
+      </article>
+      <article style="border-top: 1px solid var(--hair); padding-top: 20px;">
+        <div aria-hidden="true" style="width: 56px; margin-bottom: 16px;">{{ mark3 }}</div>
+        <h3 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: 1.45rem; line-height: 1.25; margin: 0 0 0.7rem;">MIRA</h3>
+        <p style="margin: 0; font-size: 1.0625rem; line-height: 1.6; text-wrap: pretty;">We co-founded MIRA in 2026 as a broad coalition of researchers, developers, funders and field builders driving implementation and adoption of modular research tools and practices like Discourse Graphs. MIRA includes representatives from <span data-provisional="true" title="Unresolved placeholder" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: 2px; padding: 0.15em 0.4em;">&lt;X institutions and organizations&gt;</span></p>
+      </article>
+      <article style="border-top: 1px solid var(--hair); padding-top: 20px;">
+        <div aria-hidden="true" style="width: 56px; margin-bottom: 16px;">{{ mark4 }}</div>
+        <h3 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: 1.45rem; line-height: 1.25; margin: 0 0 0.7rem;">ATScience</h3>
+        <p style="margin: 0; font-size: 1.0625rem; line-height: 1.6; text-wrap: pretty;">We co-founded ATScience in 2025 to steward the ecosystem of research tools and infrastructure on AT Protocol. ATScience has since grown to more than 20 independent apps spanning the research lifecycle — annotation, publishing, communication, review, data, and AI. All of them natively interoperate by virtue of sharing the same underlying protocol.</p>
+      </article>
+    </div>
+    <div style="width: 100%; max-width: 68ch; margin: clamp(36px, 6vh, 64px) auto 0;">
+      <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">These are the seeds. MOSAIC’s mission is weaving them into a coherent “networked research stack” and getting them to critical mass through funding and deliberate field building.</p>
+    </div>
+  </section>
+
+  <div aria-hidden="true" style="opacity: 0.075; padding: clamp(8px, 2vh, 24px) 0 clamp(40px, 8vh, 88px);">{{ dividerC }}</div>
+
+  <section style="padding: 0 clamp(20px, 5vw, 48px) clamp(48px, 9vh, 104px);">
+    <div style="width: 100%; max-width: 68ch; margin: 0 auto clamp(36px, 6vh, 60px);">
+      <h2 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.14; letter-spacing: -0.018em; margin: 0 0 1.3rem;">MOSAIC Program Structure</h2>
+      <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">The three focus areas of the MOSAIC program are modular research, AI, and open social protocols. The program is organized into two efforts:</p>
+    </div>
+    <div style="width: 100%; max-width: 940px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(32px, 5vw, 64px);">
+      <div style="border-top: 3px solid var(--lapis); padding-top: 22px;">
+        <h3 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.5rem, 2.6vw, 1.9rem); line-height: 1.2; margin: 0 0 0.75rem;">MOSAIC Core</h3>
+        <p style="margin: 0; font-size: 1.125rem; line-height: 1.62; text-wrap: pretty;">is a focused team running the program, building the shared stack and integrations, and leading adoption efforts with pilot communities.</p>
+      </div>
+      <div style="border-top: 3px solid var(--terracotta); padding-top: 22px;">
+        <h3 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.5rem, 2.6vw, 1.9rem); line-height: 1.2; margin: 0 0 0.75rem;">MOSAIC Fund</h3>
+        <p style="margin: 0; font-size: 1.125rem; line-height: 1.62; text-wrap: pretty;">is a thesis driven fund backing projects across the three program areas.</p>
+      </div>
+    </div>
+    <div style="width: 100%; max-width: 68ch; margin: clamp(36px, 6vh, 64px) auto 0; display: flex; gap: clamp(18px, 3vw, 32px); align-items: flex-start;">
+      <div aria-hidden="true" style="flex: 0 0 auto; width: 40px; padding-top: 6px;">{{ mark5 }}</div>
+      <p style="margin: 0; flex: 1 1 auto; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">MOSAIC is also partnering with Catalyze, a funding platform for research, to connect contribution data directly to research funding. Funders will be able to make informed allocation decisions based on real time data from the MOSAIC network. Part of the MOSAIC pool will be used to match contributions made through Catalyze, effectively turning community expertise into allocation signals.</p>
+    </div>
+  </section>
+
+  <section style="padding: clamp(24px, 6vh, 64px) clamp(20px, 5vw, 48px) clamp(48px, 9vh, 104px); background: var(--ground-2);">
+    <div style="width: 100%; max-width: 68ch; margin: 0 auto;">
+      <h2 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.14; letter-spacing: -0.018em; margin: 0 0 clamp(32px, 6vh, 56px);">The revolution will be networked</h2>
+      <figure style="margin: 0 0 clamp(36px, 6vh, 60px); border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); padding: clamp(28px, 5vh, 48px) 0;">
+        <blockquote style="margin: 0; position: relative;">
+          <span aria-hidden="true" style="font-family: Newsreader, Georgia, serif; color: var(--gold); font-size: clamp(3rem, 8vw, 5rem); line-height: 0.6; display: block; margin-bottom: 0.1em;">“</span>
+          <p style="font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: clamp(1.5rem, 4vw, 2.35rem); line-height: 1.32; letter-spacing: -0.012em; margin: 0; text-wrap: pretty;">To historians looking back a hundred years from now, there will be two eras of science: pre-network science, and networked science.</p>
+        </blockquote>
+        <figcaption style="margin-top: clamp(18px, 3vh, 28px); font-size: 0.9375rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);">— Reinventing Discovery</figcaption>
+      </figure>
+      <p style="margin: 0 0 1.35em; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">There is a direct path connecting Nielsen’s networked science with the growing sense that the next scientific revolutions will not be achieved only by funding elite labs or startups, but by rearchitecting science and by engineering new forms of human coordination. Coordination failure was the single most common theme named across nearly two hundred essays in a meta-science competition hosted recently by the Astera Institute: "the absence of any mechanism for doing collectively what no individual lab or team can do alone."</p>
+      <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">We have long had the vision and theory for networked science, but lacked the means to implement it. Maturing networks, technological capabilities and new funding models open a unique window of opportunity. MOSAIC is a program to catalyze the networked science revolution at a time when it has never been more needed.</p>
+    </div>
+  </section>
+
+  <section style="padding: clamp(48px, 9vh, 104px) clamp(20px, 5vw, 48px) clamp(72px, 14vh, 140px);">
+    <div style="width: 100%; max-width: 1080px; margin: 0 auto;">
+      <h2 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; margin: 0 0 clamp(24px, 4vh, 40px);">Partners</h2>
+      <ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); grid-auto-rows: minmax(88px, auto); gap: 10px;">
+        <li style="grid-column: span 2; display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;">Cosmik</li>
+        <li style="grid-column: span 2; display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;">Discourse Graphs</li>
+        <li style="display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;">MIRA</li>
+        <li style="grid-column: span 2; display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;">eLife Pathways</li>
+        <li style="display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;">CAIROS</li>
+        <li style="grid-column: span 2; display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;">ATScience</li>
+        <li style="display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;">OXA</li>
+        <li style="grid-column: span 2; display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;">Curvenote</li>
+        <li style="grid-column: span 3; display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;">Continuous Science Foundation</li>
+        <li style="display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;">SciOS</li>
+        <li style="display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;"><span data-provisional="true" title="Unconfirmed partner" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: 2px; padding: 0.25em 0.5em;">IPFS?</span></li>
+        <li style="grid-column: span 2; display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;">Catalyze</li>
+        <li style="grid-column: span 2; display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;">Knowledge Pixels</li>
+        <li style="grid-column: span 2; display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;"><span data-provisional="true" title="Unconfirmed partner" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: 2px; padding: 0.25em 0.5em;">Renaissance Philanthropy?</span></li>
+        <li style="grid-column: span 2; display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;"><span data-provisional="true" title="Unconfirmed partner" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: 2px; padding: 0.25em 0.5em;">Homeworld Collective?</span></li>
+        <li style="display: flex; align-items: center; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;"><span data-provisional="true" title="Unconfirmed partner" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: 2px; padding: 0.25em 0.5em;">Astera?</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light' | 'dark'&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;tesseraDensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0.4,&quot;max&quot;:1.3,&quot;step&quot;:0.05,&quot;default&quot;:1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Mosaic&quot;},&quot;dividers&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Mosaic&quot;}}">
+class Component extends DCLogic {
+  state = { theme: null };
+
+  constructor(props) {
+    super(props);
+    this.rootRef = React.createRef();
+    this.cache = {};
+  }
+
+  get theme() { return this.state.theme || this.props.defaultTheme || 'light'; }
+
+  componentDidMount() {
+    const root = this.rootRef.current;
+    if (!root) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const svgs = Array.from(root.querySelectorAll('svg[data-tess]'));
+    svgs.forEach(s => s.setAttribute('data-settle-ready', ''));
+    if (!('IntersectionObserver' in window)) {
+      svgs.forEach(s => s.setAttribute('data-settled', ''));
+      return;
+    }
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.setAttribute('data-settled', ''); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    svgs.forEach(s => io.observe(s));
+    this._io = io;
+  }
+
+  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+
+  rng(seed) {
+    let a = seed >>> 0;
+    return () => {
+      a = (a + 0x6D2B79F5) >>> 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  mosaic(o) {
+    const cols = o.cols, rows = o.rows, cell = o.cell || 26, gap = o.gap == null ? 5 : o.gap;
+    const jitter = o.jitter == null ? 0.13 : o.jitter, rot = o.rot == null ? 6 : o.rot;
+    const rand = this.rng(o.seed || 7);
+    const W = cols * cell, H = rows * cell;
+    const kids = [];
+    let n = 0;
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const u = cols > 1 ? c / (cols - 1) : 0.5;
+        const v = rows > 1 ? r / (rows - 1) : 0.5;
+        const roll = rand();
+        if (o.keep && !o.keep(u, v, roll)) continue;
+        const x = c * cell + gap / 2, y = r * cell + gap / 2, w = cell - gap, h = cell - gap;
+        const j = jitter * Math.min(w, h);
+        const jj = () => (rand() - 0.5) * 2 * j;
+        const pts = [[x, y], [x + w, y], [x + w, y + h], [x, y + h]]
+          .map(p => (p[0] + jj()).toFixed(2) + ',' + (p[1] + jj()).toFixed(2)).join(' ');
+        const fill = typeof o.palette === 'function' ? o.palette(u, v, rand()) : o.palette[Math.floor(rand() * o.palette.length)];
+        const op = typeof o.tileOpacity === 'function' ? o.tileOpacity(u, v, rand()) : (o.tileOpacity == null ? 1 : o.tileOpacity);
+        const rr = (rand() - 0.5) * 2 * rot;
+        kids.push(React.createElement('g', {
+          key: c + '_' + r,
+          transform: 'rotate(' + rr.toFixed(2) + ' ' + (x + w / 2).toFixed(1) + ' ' + (y + h / 2).toFixed(1) + ')'
+        }, React.createElement('polygon', {
+          points: pts, fill: fill, opacity: Number(op.toFixed(3)),
+          style: {
+            '--op': Number(op.toFixed(3)),
+            animationDelay: (rand() * 0.3 + (o.wave ? o.wave(u, v) : (u + v) * 0.18) + n * 0.0015).toFixed(3) + 's'
+          }
+        })));
+        n++;
+      }
+    }
+    return React.createElement('svg', {
+      viewBox: '0 0 ' + W + ' ' + H,
+      preserveAspectRatio: o.slice ? 'xMidYMid slice' : 'xMidYMid meet',
+      'data-tess': '', 'aria-hidden': 'true', focusable: 'false',
+      style: Object.assign({ display: 'block', width: '100%', height: o.slice ? '100%' : 'auto' }, o.style || {})
+    }, kids);
+  }
+
+  memo(key, fn) {
+    const k = key + '|' + this.density;
+    if (!this.cache[k]) this.cache[k] = fn();
+    return this.cache[k];
+  }
+
+  get density() {
+    const d = Number(this.props.tesseraDensity);
+    return isFinite(d) && d > 0 ? d : 1;
+  }
+
+  band(seed, opts) {
+    const d = this.density;
+    return this.mosaic(Object.assign({
+      cols: 54, rows: 2, cell: 26, gap: 5, seed: seed,
+      keep: (u, v, r) => r < 0.7 * d,
+      palette: ['var(--lapis)', 'var(--terracotta)', 'var(--grout)', 'var(--gold)'],
+      wave: (u) => u * 0.5
+    }, opts || {}));
+  }
+
+  cluster(seed, color, opts) {
+    return this.mosaic(Object.assign({
+      cols: 4, rows: 4, cell: 26, gap: 5, seed: seed, rot: 7,
+      keep: (u, v, r) => r < 0.62,
+      palette: Array.isArray(color) ? color : [color],
+      tileOpacity: (u, v, r) => 0.45 + r * 0.55,
+      wave: (u, v) => (u + v) * 0.14
+    }, opts || {}));
+  }
+
+  renderVals() {
+    const d = this.density;
+    const dividersOn = this.props.dividers !== false;
+    const lapis = 'var(--lapis)', terra = 'var(--terracotta)', gold = 'var(--gold)', grout = 'var(--grout)';
+
+    const heroField = this.memo('hero', () => this.mosaic({
+      cols: 34, rows: 20, cell: 34, gap: 6, seed: 20260826, slice: true, jitter: 0.14, rot: 7,
+      keep: (u, v, r) => {
+        const dx = (u - 0.8) * 1.0, dy = (v - 0.72) * 0.85;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        let p = Math.max(0.04, Math.min(0.82, 0.95 - 1.5 * dist));
+        if (u < 0.74 && v < 0.92) p *= 0.35;
+        return r < p * d;
+      },
+      palette: (u, v, r) => {
+        const dx = (u - 0.8), dy = (v - 0.72) * 0.85;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 0.28) return r < 0.72 ? lapis : (r < 0.92 ? gold : terra);
+        if (dist < 0.5) return r < 0.5 ? lapis : (r < 0.8 ? terra : grout);
+        return r < 0.55 ? grout : (r < 0.85 ? terra : lapis);
+      },
+      tileOpacity: (u, v, r) => {
+        const dx = (u - 0.8), dy = (v - 0.72) * 0.85;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        let base = Math.max(0.035, Math.min(0.3, 0.32 - 0.5 * dist)) * (0.6 + r * 0.55);
+        if (u < 0.76 && v < 0.94) base = Math.min(base, 0.055);
+        return base;
+      },
+      wave: (u, v) => (1 - Math.min(1, Math.sqrt((u - 0.8) * (u - 0.8) + (v - 0.72) * (v - 0.72)))) * 0.7
+    }));
+
+    const interlock = this.memo('interlock', () => this.mosaic({
+      cols: 48, rows: 3, cell: 26, gap: 5, seed: 903, rot: 7,
+      keep: (u, v, r) => r < 0.86 * d,
+      palette: (u, v, r) => {
+        const phase = (u * 6 + v * 1.2) % 3;
+        const fam = phase < 1 ? lapis : (phase < 2 ? terra : gold);
+        return r < 0.85 ? fam : grout;
+      },
+      tileOpacity: (u, v, r) => 0.5 + r * 0.5,
+      wave: (u) => u * 0.6
+    }));
+
+    return {
+      rootRef: this.rootRef,
+      theme: this.theme,
+      themeLabel: this.theme === 'dark' ? 'Light' : 'Dark',
+      themeAria: 'Switch to ' + (this.theme === 'dark' ? 'light' : 'dark') + ' mode',
+      toggleTheme: () => this.setState({ theme: this.theme === 'dark' ? 'light' : 'dark' }),
+      heroField: heroField,
+      dividerA: dividersOn ? this.memo('dA', () => this.band(11)) : null,
+      dividerB: dividersOn ? this.memo('dB', () => this.band(29, { rows: 1, cols: 60 })) : null,
+      dividerC: dividersOn ? this.memo('dC', () => this.band(47)) : null,
+      interlock: interlock,
+      conv1: this.memo('c1', () => this.cluster(101, [lapis, lapis, 'var(--grout)'])),
+      conv2: this.memo('c2', () => this.cluster(202, [terra, terra, 'var(--grout)'])),
+      conv3: this.memo('c3', () => this.cluster(303, [gold, gold, 'var(--grout)'])),
+      mark1: this.memo('m1', () => this.cluster(411, [lapis, terra], { cols: 3, rows: 3, keep: (u, v, r) => r < 0.7 })),
+      mark2: this.memo('m2', () => this.cluster(422, [terra, gold], { cols: 3, rows: 3, keep: (u, v, r) => Math.abs(u - v) < 0.7 && r < 0.85 })),
+      mark3: this.memo('m3', () => this.cluster(433, [lapis, gold], { cols: 3, rows: 3, keep: (u, v, r) => r < 0.55 })),
+      mark4: this.memo('m4', () => this.cluster(444, [lapis, terra, gold], { cols: 3, rows: 3, keep: (u, v, r) => r < 0.9 })),
+      mark5: this.memo('m5', () => this.cluster(455, [gold], { cols: 2, rows: 2, keep: () => true }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

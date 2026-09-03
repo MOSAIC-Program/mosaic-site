@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 24" role="img" aria-label="MIRA">
+  <title>MIRA</title>
+  <g stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round">
+    <line x1="5" y1="6.5" x2="5" y2="17.5"/>
+    <line x1="5" y1="6.5" x2="17" y2="12"/>
+    <line x1="5" y1="17.5" x2="17" y2="12"/>
+  </g>
+  <g fill="#1a1a1a">
+    <circle cx="5" cy="6.5" r="2.7"/>
+    <circle cx="5" cy="17.5" r="2.7"/>
+    <circle cx="17" cy="12" r="3.4"/>
+  </g>
+  <text x="29" y="17" fill="#1a1a1a" font-family="Newsreader, Georgia, serif" font-size="17" font-weight="600" letter-spacing="0.4">MIRA</text>
+</svg>
