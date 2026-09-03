@@ -1,0 +1,11 @@
+# OS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+
+# Node (build-content.js has no deps, but just in case)
+node_modules/
+npm-debug.log*
+MOSAIC v1/uploads/copy_file-1787772827174-68x9.pdf
