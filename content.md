@@ -154,7 +154,7 @@ The revolution will be networked
 To historians looking back a hundred years from now, there will be two eras of science: pre-network science, and networked science.
 
 ### quote-attribution
-— Reinventing Discovery
+— Michael Nielsen, Reinventing Discovery
 
 ### revolution-body1
 There is a direct path connecting Nielsen's networked science with the growing sense that the next scientific revolutions will not be achieved only by funding elite labs or startups, but by rearchitecting science and by engineering new forms of human coordination. Coordination failure was the single most common theme named across nearly two hundred essays in a meta-science competition hosted recently by the Astera Institute: "the absence of any mechanism for doing collectively what no individual lab or team can do alone."
