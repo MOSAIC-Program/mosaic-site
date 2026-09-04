@@ -102,19 +102,25 @@
 
   <header style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 20px; padding: 20px clamp(20px, 5vw, 48px); max-width: 1240px; margin: 0 auto; border-bottom: 1px solid var(--hair);">
     <span style="font-family: Newsreader, Georgia, serif; font-size: 1.0625rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink);">Mosaic</span>
-    <nav aria-label="Links" style="flex: 1 1 auto;">
+    <nav aria-label="Site sections" style="flex: 1 1 auto;">
       <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px clamp(16px, 2.4vw, 30px);">
         <li><a href="#team" style="font-size: 1rem;">Who are we</a></li>
-        <li><a href="https://bits-renphil.github.io/fellows/pdfs/ronen-tamari.pdf" target="_blank" rel="noopener noreferrer" style="font-size: 1rem;">Read the concept note</a></li>
-        <li><a href="https://youtu.be/sPxC1Gsq6DI?si=Qz8z7VIrQwRP28Je" target="_blank" rel="noopener noreferrer" style="font-size: 1rem;">Watch the BiTS Pitch</a></li>
         <li><a href="#partners" style="font-size: 1rem;">Partners</a></li>
         <li><a href="#connect" style="font-size: 1rem;">Connect</a></li>
       </ul>
     </nav>
-    <button type="button" onClick="{{ toggleTheme }}" aria-label="{{ themeAria }}" style="display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--hair); border-radius: 2px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 11px; cursor: pointer;" style-hover="border-color: var(--gold); color: var(--gold-ink);">
-      <span aria-hidden="true" style="width: 9px; height: 9px; background: var(--gold); transform: rotate(8deg); display: block;"></span>
-      {{ themeLabel }}
-    </button>
+    <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 12px clamp(16px, 2.4vw, 30px);">
+      <nav aria-label="External resources">
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px clamp(16px, 2.4vw, 30px);">
+          <li><a href="https://bits-renphil.github.io/fellows/pdfs/ronen-tamari.pdf" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 5px; font-size: 1rem;">Read the concept note<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; opacity: 0.6;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+          <li><a href="https://youtu.be/sPxC1Gsq6DI?si=Qz8z7VIrQwRP28Je" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 5px; font-size: 1rem;">Watch the BiTS Pitch<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; opacity: 0.6;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></li>
+        </ul>
+      </nav>
+      <button type="button" onClick="{{ toggleTheme }}" aria-label="{{ themeAria }}" style="display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--hair); border-radius: 2px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 11px; cursor: pointer;" style-hover="border-color: var(--gold); color: var(--gold-ink);">
+        <span aria-hidden="true" style="width: 9px; height: 9px; background: var(--gold); transform: rotate(8deg); display: block;"></span>
+        {{ themeLabel }}
+      </button>
+    </div>
   </header>
 
   <section aria-labelledby="mosaic-hero" style="position: relative; padding: clamp(48px, 11vh, 120px) clamp(20px, 5vw, 48px) clamp(56px, 10vh, 120px);">
@@ -271,7 +277,7 @@
     </div>
   </section>
 
-  <section id="team" style="padding: 0 clamp(20px, 5vw, 48px) clamp(56px, 10vh, 112px);">
+  <section id="team" style="padding: clamp(48px, 9vh, 104px) clamp(20px, 5vw, 48px) clamp(56px, 10vh, 112px);">
     <div style="width: 100%; max-width: 1080px; margin: 0 auto;">
       <h2 class="anchor-heading" style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; margin: 0 0 clamp(24px, 4vh, 40px);">Team<a href="#team" class="anchor-link" aria-label="Link to this section">#</a></h2>
 
