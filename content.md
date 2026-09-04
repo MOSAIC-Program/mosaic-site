@@ -24,7 +24,7 @@ After editing, regenerate the page with:
 Modular Open Science, AI & Collective Intelligence
 
 ### hero-intro
-MOSAIC is an R&D program to build a new medium for networked research. MOSAIC integrates modular research tools, open social networks, and AI to solve crucial coordination bottlenecks, democratize science and radically accelerate breakthroughs.
+MOSAIC is an R&D program to build a new medium for *networked research*. MOSAIC integrates modular research tools, open social networks, and AI to solve crucial coordination bottlenecks, democratize science and radically accelerate breakthroughs.
 
 ### bits-credit
 Developed through the [Big if True Science (BiTS) accelerator](https://www.renaissancephilanthropy.org/bits/fellows) at Renaissance Philanthropy
