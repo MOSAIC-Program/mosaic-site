@@ -57,7 +57,7 @@ The next medium for science is networked.
 In 2011, Michael Nielsen's *Reinventing Discovery: The New Era of Networked Science* introduced the idea of **networked science**. He argued that the internet and open online collaboration could democratize and accelerate science by applying the coordination patterns behind successful large scale projects like Wikipedia and Linux: composable and modular micro-contributions, low contribution barriers, networked in the open, at enormous scale. Despite some initial encouraging examples like preprint servers and citizen science projects, Nielsen's own assessment was that we had fallen far short of the potential for networked science. It still holds.
 
 ### networked-emphasis
-The idea wasn't wrong. But the right substrate didn't exist.
+The vision was brilliant. But the right substrate didn't exist.
 
 ### build-heading
 MOSAIC is a program to build it.
