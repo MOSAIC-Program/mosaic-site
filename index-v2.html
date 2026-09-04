@@ -89,6 +89,8 @@
     .started-grid { grid-template-columns: 1fr !important; }
   }
   .partner-tile:hover img { filter: grayscale(0) !important; opacity: 1 !important; }
+  [data-theme="dark"] .partner-tile img { filter: grayscale(1) invert(1) !important; }
+  [data-theme="dark"] .partner-tile:hover img { filter: invert(1) !important; opacity: 1 !important; }
   .btn-connect { transition: background-color .18s ease; }
   .btn-connect:hover { background-color: var(--gold-ink) !important; }
   .footer-link:hover { color: var(--gold-ink) !important; }
