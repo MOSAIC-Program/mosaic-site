@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Regenerates index-v2.html from index-v2.template.html + content.md.
+// Regenerates index.html from index-v2.template.html + content.md.
 // No dependencies. Run: node build-content.js
 
 const fs = require('fs');
@@ -8,7 +8,7 @@ const path = require('path');
 const DIR = __dirname;
 const CONTENT_PATH = path.join(DIR, 'content.md');
 const TEMPLATE_PATH = path.join(DIR, 'index-v2.template.html');
-const OUTPUT_PATH = path.join(DIR, 'index-v2.html');
+const OUTPUT_PATH = path.join(DIR, 'index.html');
 
 const PROVISIONAL_INLINE_STYLE =
   'font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; ' +

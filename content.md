@@ -1,5 +1,5 @@
 <!--
-Editable copy for index-v2.html.
+Editable copy for index.html.
 
 Each section below is introduced by a "### key" heading. The text under
 it is what gets injected into the matching spot on the page.
