@@ -72,8 +72,12 @@ function renderInline(raw) {
   // *italic*
   text = text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
 
-  // Collapse any internal newlines/whitespace from wrapped source lines.
-  text = text.replace(/\s+/g, ' ').trim();
+  // Blank lines mark paragraph breaks — render as <br><br>. Within each
+  // paragraph, collapse internal newlines/whitespace from wrapped source lines.
+  text = text
+    .split(/\n\s*\n/)
+    .map(p => p.replace(/\s+/g, ' ').trim())
+    .join('<br><br>');
 
   return text;
 }

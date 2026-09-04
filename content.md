@@ -22,7 +22,7 @@ After editing, regenerate the page with:
 Modular Open Science, AI & Collective Intelligence
 
 ### hero-intro
-MOSAIC is an R&D program to build a new medium for large-scale, AI-augmented networked research. MOSAIC integrates modular research tools, open social networking protocols, and AI to solve crucial coordination challenges and unlock collective capacity to tackle “wicked problems” beyond the reach of the current scientific system.
+MOSAIC is an R&D program to build a new medium for networked research. MOSAIC integrates modular research tools, open social networks, and AI to solve crucial coordination bottlenecks, democratize science and radically accelerate breakthroughs.
 
 ### bits-credit
 Developed through the [Big if True Science (BiTS) accelerator](https://www.renaissancephilanthropy.org/bits/fellows) at Renaissance Philanthropy
@@ -52,7 +52,7 @@ The internet revolutionized how knowledge is created and shared. Today's AI is o
 The next medium for science is networked.
 
 ### networked-body1
-In 2011, Michael Nielsen's *Reinventing Discovery* argued that the internet and open online collaboration could democratize and accelerate science by applying the coordination patterns behind successful large scale projects like Wikipedia and Linux: composable and modular micro-contributions, low contribution barriers, networked in the open, at enormous scale. Despite some initial encouraging examples like preprint servers and citizen science projects, Nielsen's own assessment was that we had fallen far short of the potential for networked science. It still holds.
+In 2011, Michael Nielsen's *Reinventing Discovery: The New Era of Networked Science* introduced the idea of **networked science**. He argued that the internet and open online collaboration could democratize and accelerate science by applying the coordination patterns behind successful large scale projects like Wikipedia and Linux: composable and modular micro-contributions, low contribution barriers, networked in the open, at enormous scale. Despite some initial encouraging examples like preprint servers and citizen science projects, Nielsen's own assessment was that we had fallen far short of the potential for networked science. It still holds.
 
 ### networked-emphasis
 The idea wasn't wrong. But the right substrate didn't exist.
@@ -64,19 +64,23 @@ MOSAIC is a program to build it.
 MOSAIC (Modular Open Science, AI & Collective Intelligence) is an R&D program to realize the vision of networked science. MOSAIC was incubated at Renaissance Philanthropy's Big if True Science accelerator (BiTS), a fellowship for scientists and technologists to design ambitious R&D programs.
 
 ### build-body2
-Our Big if True hypothesis is that an intentionally designed networked research medium will enable humans and agents to solve crucial coordination challenges and radically accelerate breakthroughs.
+Our Big if True hypothesis is that **an intentionally designed networked research medium will enable humans and agents to solve crucial coordination challenges and radically accelerate breakthroughs.**
 
 ### whynow-heading
 Why now?
 
 ### whynow-intro
-Three mutually reinforcing developments are converging to create a unique opportunity:
+Three mutually reinforcing developments are converging to create a unique opportunity to implement the networked coordination patterns identified by Nielsen:
 
 ### conv1-body
-**Modular research tools** (such as Discourse Graphs, OXA and Nanopublications) are making it possible to represent the actual process of research (hypotheses, questions, critiques, evidence, etc) as reusable, machine-readable units rather than burying them inside monolithic papers. Early Discourse Graph deployments are showing promising evidence that these tools help researchers think and collaborate better.
+**Modular research tools** (such as Discourse Graphs and Nanopublications) are making it possible to represent the actual process of research (hypotheses, questions, critiques, evidence, etc) as reusable, machine-readable units rather than burying them inside monolithic papers. Early Discourse Graph deployments are showing promising evidence that these tools help researchers think and collaborate better.
+
+*"Even in the limited time I've used Discourse Graphs, I've found huge improvements in my thinking and doing of science."* — Pilot user
 
 ### conv2-body
-**Protocol-based social networks** such as AT Protocol (powering the Bluesky platform) are a credible alternative to closed platforms, and large science communities have already moved there. Scientific micro-contributions already happen on social media — discussion, data sharing, and meaningful real-time evaluation of research. However, we lack the means to recognize these contributions as such: data is locked in closed platforms, and rich social media discourse is flattened into ”research mentions”. Protocols are what make the difference, as they enable not just rebuilding Science Twitter, but shaping whole new apps and services for research, on decentralized infrastructure that is resilient to capture.
+**Protocol-based social networks** such as AT Protocol (powering the Bluesky platform) are a credible alternative to closed platforms, and large science communities have already moved there. Scientific micro-contributions already happen on social media — discussion, data sharing, and meaningful real-time evaluation of research. However, we lack the means to recognize these contributions as such: data is locked in closed platforms, and rich social media discourse is flattened into "research mentions". Protocols are what make the difference, as they enable not just rebuilding Science Twitter, but shaping whole new apps and services for research, on decentralized infrastructure that is resilient to capture. The [AT Protocol science ecosystem](https://atproto.science/ecosystem/), described [below](#started), has grown to more than 30 interoperating apps spanning the research lifecycle.
+
+*"The properties that make AT Protocol compelling for social networking are the same properties the research community has been asking for"* — [Scientific Documents as First-Class Objects on AT Protocol](https://oxa.dev/articles/oxa-on-at-proto)
 
 ### conv3-body
 **AI that can contribute.** AI progress makes networked science even more relevant. AI systems can now work across the full research lifecycle but lack the scaffolding to do it traceably and verifiably. Social networks provide essential human trust, curation and interaction. Modular research provides the right interface for agentic science and high fidelity data in the form of structured reasoning traces. Papers fail models as both inputs and outputs: neither machine-readable nor faithful records of how research happens, so AI trained on them inherits a distorted picture of science; and cheap enough for agents to generate that review has nothing smaller or more verifiable to anchor against.
@@ -85,7 +89,7 @@ Three mutually reinforcing developments are converging to create a unique opport
 Networked research won't emerge on its own, but cutting edge philanthropy is uniquely positioned to catalyze it.
 
 ### catalyze-body
-Networked research, which thrives on openness and large-scale collaborative ecosystems, has also long been blocked by an infrastructure funding gap. Academia and small non-profits lack the engineering capacity to build it. Startups need near-term returns and, like the incumbent platforms, depend on moats and data enclosure. Catalytic philanthropy, such as deployed by Renaissance Philanthropy, is the unlock: it can fund at the scale infrastructure requires, tolerate long time horizons that the market cannot, and build a field rather than just products.
+Networked research, which thrives on openness and large-scale collaborative ecosystems, has also long been blocked by an infrastructure funding gap. Academia and small non-profits lack the engineering capacity to build it. Startups need near-term returns and, like the incumbent platforms, depend on moats and data enclosure. [Catalytic philanthropy](https://renaissancephilanthropy.substack.com/p/philanthropy-20-what-the-evolution), such as deployed by Renaissance Philanthropy, is the unlock: it can fund at the scale infrastructure requires, tolerate long time horizons that the market cannot, and build a field rather than just products.
 
 ### started-heading
 We've already started.
@@ -97,19 +101,19 @@ Between us, we've spent over a decade building the products, ecosystems, and net
 [Discourse Graphs](https://discoursegraphs.com/)
 
 ### card1-body
-{{provisional: <Discourse Graphs are deployed across X research labs, with Y structured contributions in the past year.>}}
+Discourse Graphs are deployed across over a dozen research labs, with hundreds of researchers using them weekly in their lab notebooks and making over 12,000 structured contributions in the past year.
 
 ### card2-title
-[Cosmik/Semble](https://semble.so/)
+[Cosmik](https://cosmik.network/)
 
 ### card2-body
-We also co-founded Cosmik where we're building a curation network for researchers called Semble. Semble already has more than a thousand users and an active integration with Discourse Graphs, providing early evidence for social apps as a strong adoption driver for networked research.
+We co-founded Cosmik as an R&D lab for collective sensemaking tools. Comsik is building a curation network for researchers called [Semble](https://semble.so/). Semble already has more than a thousand users and an active integration with Discourse Graphs, providing early evidence for social apps as a strong adoption driver for networked research.
 
 ### card3-title
 [MIRA](https://www.mira.science/)
 
 ### card3-body
-We co-founded MIRA in 2026 as a broad coalition of researchers, developers, funders and field builders driving implementation and adoption of modular research tools and practices like Discourse Graphs. MIRA includes representatives from {{provisional: <X institutions and organizations>}}
+We co-founded MIRA in 2026 as a broad coalition driving implementation and adoption of modular research tools and practices like Discourse Graphs. MIRA includes researchers, developers, funders and field builders from more than a dozen organizations.
 
 ### card4-title
 [ATScience](https://atproto.science/)
@@ -154,7 +158,7 @@ To historians looking back a hundred years from now, there will be two eras of s
 There is a direct path connecting Nielsen's networked science with the growing sense that the next scientific revolutions will not be achieved only by funding elite labs or startups, but by rearchitecting science and by engineering new forms of human coordination. Coordination failure was the single most common theme named across nearly two hundred essays in a meta-science competition hosted recently by the Astera Institute: "the absence of any mechanism for doing collectively what no individual lab or team can do alone."
 
 ### revolution-body2
-We have long had the vision and theory for networked science, but lacked the means to implement it. Maturing networks, technological capabilities and new funding models open a unique window of opportunity. MOSAIC is a program to catalyze the networked science revolution at a time when it has never been more needed.
+We have long had the vision and theory for networked science, but lacked the means to implement it. Maturing networks and technological capabilities and new funding models open a unique window of opportunity. MOSAIC is a program to catalyze the networked science revolution at a time when it has never been more needed.
 
 ### partners-heading
 Partners
