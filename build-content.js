@@ -59,6 +59,12 @@ function renderInline(raw) {
     `<span data-provisional="true" title="Unresolved placeholder" style="${PROVISIONAL_INLINE_STYLE}">${inner.trim()}</span>`
   );
 
+  // ![alt](src) — must run before [text](url) so the outer link syntax
+  // (if the image is wrapped in one) still matches correctly.
+  text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) =>
+    `<img src="${src}" alt="${alt}" class="content-logo" style="height: 48px; width: auto; max-width: 100%; vertical-align: middle;">`
+  );
+
   // [text](url)
   text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => {
     const external = /^https?:\/\//.test(url);

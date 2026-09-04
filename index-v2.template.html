@@ -89,6 +89,7 @@
   .btn-connect { transition: background-color .18s ease; }
   .btn-connect:hover { background-color: var(--gold-ink) !important; }
   .footer-link:hover { color: var(--gold-ink) !important; }
+  [data-theme="dark"] .content-logo { filter: invert(1); }
   .anchor-heading { scroll-margin-top: 24px; }
   .anchor-link { margin-left: 0.4em; font-size: 0.62em; font-weight: 400; vertical-align: middle; text-decoration: none; color: var(--muted); opacity: 0; transition: opacity .15s ease; }
   .anchor-heading:hover .anchor-link, .anchor-link:focus-visible { opacity: 1; }
@@ -208,22 +209,18 @@
     </div>
     <div class="started-grid" style="width: 100%; max-width: 820px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(28px, 4vw, 48px) clamp(28px, 5vw, 64px);">
       <article style="border-top: 1px solid var(--hair); padding-top: 20px;">
-        <div aria-hidden="true" style="width: 56px; margin-bottom: 16px;">{{ mark1 }}</div>
         <h3 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: 1.45rem; line-height: 1.25; margin: 0 0 0.7rem;">@@card1-title@@</h3>
         <p style="margin: 0; font-size: 1.0625rem; line-height: 1.6;">@@card1-body@@</p>
       </article>
       <article style="border-top: 1px solid var(--hair); padding-top: 20px;">
-        <div aria-hidden="true" style="width: 56px; margin-bottom: 16px;">{{ mark2 }}</div>
         <h3 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: 1.45rem; line-height: 1.25; margin: 0 0 0.7rem;">@@card2-title@@</h3>
         <p style="margin: 0; font-size: 1.0625rem; line-height: 1.6; text-wrap: pretty;">@@card2-body@@</p>
       </article>
       <article style="border-top: 1px solid var(--hair); padding-top: 20px;">
-        <div aria-hidden="true" style="width: 56px; margin-bottom: 16px;">{{ mark3 }}</div>
         <h3 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: 1.45rem; line-height: 1.25; margin: 0 0 0.7rem;">@@card3-title@@</h3>
         <p style="margin: 0; font-size: 1.0625rem; line-height: 1.6; text-wrap: pretty;">@@card3-body@@</p>
       </article>
       <article style="border-top: 1px solid var(--hair); padding-top: 20px;">
-        <div aria-hidden="true" style="width: 56px; margin-bottom: 16px;">{{ mark4 }}</div>
         <h3 style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: 1.45rem; line-height: 1.25; margin: 0 0 0.7rem;">@@card4-title@@</h3>
         <p style="margin: 0; font-size: 1.0625rem; line-height: 1.6; text-wrap: pretty;">@@card4-body@@</p>
       </article>
@@ -509,10 +506,6 @@ class Component extends DCLogic {
       conv1: this.memo('c1', () => this.cluster(101, [lapis, lapis, 'var(--grout)'])),
       conv2: this.memo('c2', () => this.cluster(202, [terra, terra, 'var(--grout)'])),
       conv3: this.memo('c3', () => this.cluster(303, [gold, gold, 'var(--grout)'])),
-      mark1: this.memo('m1', () => this.cluster(411, [lapis, terra], { cols: 3, rows: 3, keep: (u, v, r) => r < 0.7 })),
-      mark2: this.memo('m2', () => this.cluster(422, [terra, gold], { cols: 3, rows: 3, keep: (u, v, r) => Math.abs(u - v) < 0.7 && r < 0.85 })),
-      mark3: this.memo('m3', () => this.cluster(433, [lapis, gold], { cols: 3, rows: 3, keep: (u, v, r) => r < 0.55 })),
-      mark4: this.memo('m4', () => this.cluster(444, [lapis, terra, gold], { cols: 3, rows: 3, keep: (u, v, r) => r < 0.9 })),
       mark5: this.memo('m5', () => this.cluster(455, [gold], { cols: 2, rows: 2, keep: () => true }))
     };
   }

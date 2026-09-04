@@ -8,6 +8,8 @@ Formatting you can use inside a section:
   **bold text**
   *italic text*
   [link text](https://example.com)
+  ![alt text](./images/path-to-image.svg)   — inline image, e.g. a logo (48px tall)
+  [![alt text](./images/path-to-image.svg)](https://example.com)   — image wrapped in a link
   {{provisional: <placeholder text>}}   — renders as an orange "not confirmed yet" badge
 
 Section boundaries are the "### key" lines — don't rename the keys
@@ -98,28 +100,28 @@ We've already started.
 Between us, we've spent over a decade building the products, ecosystems, and networks that MOSAIC is rooted in.
 
 ### card1-title
-[Discourse Graphs](https://discoursegraphs.com/)
+[![Discourse Graphs](./images/partners/discourse-graphs-logo.svg)](https://discoursegraphs.com/)
 
 ### card1-body
 Discourse Graphs are deployed across over a dozen research labs, with hundreds of researchers using them weekly in their lab notebooks and making over 12,000 structured contributions in the past year.
 
 ### card2-title
-[Cosmik](https://cosmik.network/)
+[![Cosmik](./images/partners/cosmik_logo-full.svg)](https://cosmik.network/)
 
 ### card2-body
 We co-founded Cosmik as an R&D lab for collective sensemaking tools. Comsik is building a curation network for researchers called [Semble](https://semble.so/). Semble already has more than a thousand users and an active integration with Discourse Graphs, providing early evidence for social apps as a strong adoption driver for networked research.
 
 ### card3-title
-[MIRA](https://www.mira.science/)
+[![MIRA](./images/partners/mira-logo.svg)](https://www.mira.science/)
 
 ### card3-body
 We co-founded MIRA in 2026 as a broad coalition driving implementation and adoption of modular research tools and practices like Discourse Graphs. MIRA includes researchers, developers, funders and field builders from more than a dozen organizations.
 
 ### card4-title
-[ATScience](https://atproto.science/)
+[![ATScience](./images/partners/ATScience-Logo-RGB-Black.svg)](https://atproto.science/)
 
 ### card4-body
-We co-founded ATScience in 2025 to steward the ecosystem of research tools and infrastructure on AT Protocol. ATScience has since grown to more than 20 independent apps spanning the research lifecycle — annotation, publishing, communication, review, data, and AI. All of them natively interoperate by virtue of sharing the same underlying protocol.
+We co-founded ATScience in 2025 to steward the ecosystem of research tools and infrastructure on AT Protocol. ATScience has since grown to more than [30 independent apps](https://atproto.science/ecosystem/) spanning the research lifecycle — annotation, publishing, communication, review, data, and AI. All of them natively interoperate by virtue of sharing the same underlying protocol.
 
 ### started-closing
 These are the seeds. MOSAIC's mission is weaving them into a coherent “networked research stack” and getting them to critical mass through funding and deliberate field building.
@@ -143,7 +145,7 @@ MOSAIC Fund
 is a thesis driven fund backing projects across the three program areas.
 
 ### catalyze-partner-body
-MOSAIC is also partnering with Catalyze, a funding platform for research, to connect contribution data directly to research funding. Funders will be able to make informed allocation decisions based on real time data from the MOSAIC network. Part of the MOSAIC pool will be used to match contributions made through Catalyze, effectively turning community expertise into allocation signals.
+MOSAIC is also partnering with [Catalyze](https://catalyzernd.com/), a funding platform for research, to connect contribution data directly to research funding. Funders will be able to make informed allocation decisions based on real time data from the MOSAIC network. Part of the MOSAIC pool will be used to match contributions made through Catalyze, effectively turning community expertise into allocation signals.
 
 ### revolution-heading
 The revolution will be networked
