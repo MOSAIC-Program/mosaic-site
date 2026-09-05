@@ -160,7 +160,7 @@ To historians looking back a hundred years from now, there will be two eras of s
 There is a direct path connecting Nielsen's networked science with the growing sense that the next scientific revolutions [will not be achieved only by funding elite labs or startups, but by rearchitecting science](https://catalyzernd.substack.com/p/rebuilding-the-architecture-of-science) and [by engineering new forms of human coordination](https://uniconq.substack.com/p/the-ground-truth-institute). Coordination failure was the [single most common theme](https://asterainstitute.substack.com/p/what-scientists-said-results-from) named across nearly two hundred essays in a meta-science competition hosted recently by the Astera Institute: "the absence of any mechanism for doing collectively what no individual lab or team can do alone."
 
 ### revolution-body2
-We have long had the vision and theory for networked science, but lacked the means to implement it. Maturing networks and technological capabilities and new funding models open a unique window of opportunity. MOSAIC is a program to catalyze the networked science revolution at a time when it has never been more needed.
+We have long had the vision and theory for networked science, but lacked the means to implement it. Maturing networks and technological capabilities combined with new funding models open a unique window of opportunity. MOSAIC is a program to catalyze the networked science revolution at a time when it has never been more needed.
 
 ### partners-heading
 Partners
