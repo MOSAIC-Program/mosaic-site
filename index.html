@@ -75,6 +75,32 @@
   summary.bio-trigger { cursor: pointer; list-style: none; }
   summary.bio-trigger::-webkit-details-marker { display: none; }
   summary.bio-trigger:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .footnote { position: relative; display: inline-block; cursor: help; }
+  .footnote-marker { font-size: 0.7em; vertical-align: super; color: var(--gold-ink); border-bottom: 1px dotted var(--gold-ink); padding-bottom: 0.05em; }
+  .footnote-tooltip {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: min(320px, 80vw);
+    margin-bottom: 8px;
+    padding: 10px 12px;
+    background: var(--ground-2);
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.45;
+    text-align: left;
+    text-wrap: pretty;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px oklch(0% 0 0 / 0.18);
+    z-index: 20;
+    white-space: normal;
+  }
+  .footnote:hover .footnote-tooltip, .footnote:focus-within .footnote-tooltip { display: block; }
   #mosaic-content strong { font-weight: 600; color: var(--ink); }
   @keyframes tessera-settle {
     from { opacity: 0; transform: translateY(7px) rotate(-5deg) scale(0.93); }
@@ -159,7 +185,7 @@
   <section style="padding: 0 clamp(20px, 5vw, 48px) clamp(48px, 9vh, 104px);">
     <div style="width: 100%; max-width: 68ch; margin: 0 auto;">
       <h2 id="networked" class="anchor-heading" style="font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.14; letter-spacing: -0.018em; margin: 0 0 1.3rem; text-wrap: pretty;">The next medium for science is networked.<a href="#networked" class="anchor-link" aria-label="Link to this section">#</a></h2>
-      <p style="margin: 0 0 1.35em; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">In 2011, Michael Nielsen's <em>Reinventing Discovery: The New Era of Networked Science</em> introduced the idea of <strong>networked science</strong>. He argued that the internet and open online collaboration could democratize and accelerate science by applying the coordination patterns behind successful large scale projects like Wikipedia and Linux: composable and modular micro-contributions, low contribution barriers, networked in the open, at enormous scale. Despite some initial encouraging examples like preprint servers and citizen science projects, Nielsen's own assessment was that we had fallen far short of the potential for networked science. It still holds.</p>
+      <p style="margin: 0 0 1.35em; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">In 2011, Michael Nielsen's <em>Reinventing Discovery: The New Era of Networked Science</em> introduced the idea of <strong>networked science</strong><span class="footnote" tabindex="0"><sup class="footnote-marker">1</sup><span class="footnote-tooltip">We use "networked research" and "networked science" somewhat interchangeably: "networked science" is more faithful to Nielsen's original conception, but "research" is more suitable for our purposes since it captures a wider range of scholarly activities.</span></span>. He argued that the internet and open online collaboration could democratize and accelerate science by applying the coordination patterns behind successful large scale projects like Wikipedia and Linux: composable and modular micro-contributions, low contribution barriers, networked in the open, at enormous scale. Despite some initial encouraging examples like preprint servers and citizen science projects, Nielsen's own assessment was that we had fallen far short of the potential for networked science. It still holds.</p>
       <p style="font-family: Newsreader, Georgia, serif; font-style: italic; font-weight: 400; font-size: clamp(1.3rem, 2.6vw, 1.75rem); line-height: 1.4; color: var(--lapis); margin: 0; text-wrap: pretty;">The vision was brilliant. But the right substrate didn't exist.</p>
     </div>
   </section>
@@ -192,7 +218,7 @@
       <li style="display: flex; gap: clamp(20px, 4vw, 40px); align-items: flex-start; flex-wrap: wrap;">
         <div aria-hidden="true" style="flex: 0 0 auto; width: clamp(84px, 12vw, 116px);">{{ conv2 }}</div>
         <div style="flex: 1 1 320px; min-width: 0;">
-          <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;"><span style="font-family: Newsreader, Georgia, serif; font-size: 1.15em; color: var(--terracotta);">(2)</span> <strong>Protocol-based social networks</strong> such as <a href="https://atproto.com/" target="_blank" rel="noopener noreferrer">AT Protocol</a> (powering the Bluesky platform) are a credible alternative to closed platforms, and large science communities have already moved there. Scientific micro-contributions already happen on social media — discussion, data sharing, and meaningful real-time evaluation of research. However, on <em>legacy</em> social media we lack the means to recognize these contributions as such: data is locked in closed platforms, and rich social media discourse is flattened into "research mentions". <strong>The protocol-first architecture is what makes the difference</strong>, as it enables not just rebuilding "Science Twitter", but evolving whole new apps and services for research, on open and decentralized infrastructure. The <a href="https://atproto.science/ecosystem/" target="_blank" rel="noopener noreferrer">AT Protocol science ecosystem</a>, described <a href="#started">below</a>, has grown to more than 30 interoperating apps spanning the research lifecycle.<br><br><em>"The properties that make AT Protocol compelling for social networking are the same properties the research community has been asking for"</em> — <a href="https://oxa.dev/articles/oxa-on-at-proto" target="_blank" rel="noopener noreferrer">Scientific Documents as First-Class Objects on AT Protocol</a></p>
+          <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;"><span style="font-family: Newsreader, Georgia, serif; font-size: 1.15em; color: var(--terracotta);">(2)</span> <strong>Protocol-based social networks</strong> such as <a href="https://atproto.com/" target="_blank" rel="noopener noreferrer">AT Protocol</a> (powering the Bluesky platform) are a credible alternative to closed platforms, and large science communities have already moved there. Scientific micro-contributions already happen on social media — discussion, data sharing, and meaningful real-time evaluation of research. However, on <em>legacy</em> social media we lack the means to recognize these contributions as such: data is locked in closed platforms, and rich social media discourse is flattened into "research mentions". New forms of coordination require new protocols, hence the <strong>the open protocol architecture is a key unlock.</strong> In practice, it enables not just rebuilding "Science Twitter", but evolving whole new apps and services for research, on open-source and decentralized infrastructure. Demonstrating this is the <a href="https://atproto.science/ecosystem/" target="_blank" rel="noopener noreferrer">AT Protocol science ecosystem</a>, described <a href="#started">below</a>, which has grown to more than 30 interoperating apps spanning the research lifecycle.<br><br><em>"The properties that make AT Protocol compelling for social networking are the same properties the research community has been asking for"</em> — <a href="https://oxa.dev/articles/oxa-on-at-proto" target="_blank" rel="noopener noreferrer">Scientific Documents as First-Class Objects on AT Protocol</a></p>
         </div>
       </li>
       <li style="display: flex; gap: clamp(20px, 4vw, 40px); align-items: flex-start; flex-wrap: wrap;">
@@ -275,7 +301,7 @@
         <figcaption style="margin-top: clamp(18px, 3vh, 28px); font-size: 0.9375rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);">— Michael Nielsen, Reinventing Discovery</figcaption>
       </figure>
       <p style="margin: 0 0 1.35em; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">There is a direct path connecting Nielsen's networked science with the growing sense that the next scientific revolutions <a href="https://catalyzernd.substack.com/p/rebuilding-the-architecture-of-science" target="_blank" rel="noopener noreferrer">will not be achieved only by funding elite labs or startups, but by rearchitecting science</a> and by developing new <a href="https://www.shishyko.com/supercritical/" target="_blank" rel="noopener noreferrer">infrastructure</a> and <a href="https://uniconq.substack.com/p/the-ground-truth-institute" target="_blank" rel="noopener noreferrer">institutions</a> for coordination. Coordination failure was the <a href="https://asterainstitute.substack.com/p/what-scientists-said-results-from" target="_blank" rel="noopener noreferrer">single most common theme</a> named across nearly two hundred essays in a meta-science competition hosted recently by the Astera Institute: "the absence of any mechanism for doing collectively what no individual lab or team can do alone."</p>
-      <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">We have long had the vision and theory for networked science, but lacked the means to implement it. New protocols, networks and technological capabilities combined with new funding models open a unique window of opportunity. MOSAIC is a program to catalyze the networked science revolution at a time when it has never been more needed.</p>
+      <p style="margin: 0; font-size: clamp(1.0625rem, 1.5vw, 1.3125rem); line-height: 1.68; text-wrap: pretty;">We have long had the vision and theory for networked science, but lacked the means to implement it. New protocols, networks and technological capabilities, combined with new funding models, open a unique window of opportunity. MOSAIC is a program to catalyze the networked science revolution at a time when it has never been more needed.</p>
     </div>
   </section>
 

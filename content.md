@@ -11,6 +11,7 @@ Formatting you can use inside a section:
   ![alt text](./images/path-to-image.svg)   — inline image, e.g. a logo (48px tall)
   [![alt text](./images/path-to-image.svg)](https://example.com)   — image wrapped in a link
   {{provisional: <placeholder text>}}   — renders as an orange "not confirmed yet" badge
+  {{footnote: <note text>}}   — renders as a numbered superscript; note shows on hover
 
 Section boundaries are the "### key" lines — don't rename the keys
 (the build script matches them to slots in index-v2.template.html),
@@ -54,7 +55,7 @@ The internet revolutionized how knowledge is created and shared. Today's AI is o
 The next medium for science is networked.
 
 ### networked-body1
-In 2011, Michael Nielsen's *Reinventing Discovery: The New Era of Networked Science* introduced the idea of **networked science**. He argued that the internet and open online collaboration could democratize and accelerate science by applying the coordination patterns behind successful large scale projects like Wikipedia and Linux: composable and modular micro-contributions, low contribution barriers, networked in the open, at enormous scale. Despite some initial encouraging examples like preprint servers and citizen science projects, Nielsen's own assessment was that we had fallen far short of the potential for networked science. It still holds.
+In 2011, Michael Nielsen's *Reinventing Discovery: The New Era of Networked Science* introduced the idea of **networked science**{{footnote: We use "networked research" and "networked science" somewhat interchangeably: "networked science" is more faithful to Nielsen's original conception, but "research" is more suitable for our purposes since it captures a wider range of scholarly activities.}}. He argued that the internet and open online collaboration could democratize and accelerate science by applying the coordination patterns behind successful large scale projects like Wikipedia and Linux: composable and modular micro-contributions, low contribution barriers, networked in the open, at enormous scale. Despite some initial encouraging examples like preprint servers and citizen science projects, Nielsen's own assessment was that we had fallen far short of the potential for networked science. It still holds.
 
 ### networked-emphasis
 The vision was brilliant. But the right substrate didn't exist.
@@ -80,7 +81,7 @@ Three mutually reinforcing developments are converging to create a unique opport
 *"Even in the limited time I've used Discourse Graphs, I've found huge improvements in my thinking and doing of science."* — Pilot user
 
 ### conv2-body
-**Protocol-based social networks** such as [AT Protocol](https://atproto.com/) (powering the Bluesky platform) are a credible alternative to closed platforms, and large science communities have already moved there. Scientific micro-contributions already happen on social media — discussion, data sharing, and meaningful real-time evaluation of research. However, on *legacy* social media we lack the means to recognize these contributions as such: data is locked in closed platforms, and rich social media discourse is flattened into "research mentions". **The protocol-first architecture is what makes the difference**, as it enables not just rebuilding "Science Twitter", but evolving whole new apps and services for research, on open and decentralized infrastructure. The [AT Protocol science ecosystem](https://atproto.science/ecosystem/), described [below](#started), has grown to more than 30 interoperating apps spanning the research lifecycle.
+**Protocol-based social networks** such as [AT Protocol](https://atproto.com/) (powering the Bluesky platform) are a credible alternative to closed platforms, and large science communities have already moved there. Scientific micro-contributions already happen on social media — discussion, data sharing, and meaningful real-time evaluation of research. However, on *legacy* social media we lack the means to recognize these contributions as such: data is locked in closed platforms, and rich social media discourse is flattened into "research mentions". New forms of coordination require new protocols, hence the **the open protocol architecture is a key unlock.** In practice, it enables not just rebuilding "Science Twitter", but evolving whole new apps and services for research, on open-source and decentralized infrastructure. Demonstrating this is the [AT Protocol science ecosystem](https://atproto.science/ecosystem/), described [below](#started), which has grown to more than 30 interoperating apps spanning the research lifecycle.
 
 *"The properties that make AT Protocol compelling for social networking are the same properties the research community has been asking for"* — [Scientific Documents as First-Class Objects on AT Protocol](https://oxa.dev/articles/oxa-on-at-proto)
 
@@ -160,7 +161,7 @@ To historians looking back a hundred years from now, there will be two eras of s
 There is a direct path connecting Nielsen's networked science with the growing sense that the next scientific revolutions [will not be achieved only by funding elite labs or startups, but by rearchitecting science](https://catalyzernd.substack.com/p/rebuilding-the-architecture-of-science) and by developing new [infrastructure](https://www.shishyko.com/supercritical/) and [institutions](https://uniconq.substack.com/p/the-ground-truth-institute) for coordination. Coordination failure was the [single most common theme](https://asterainstitute.substack.com/p/what-scientists-said-results-from) named across nearly two hundred essays in a meta-science competition hosted recently by the Astera Institute: "the absence of any mechanism for doing collectively what no individual lab or team can do alone."
 
 ### revolution-body2
-We have long had the vision and theory for networked science, but lacked the means to implement it. New protocols, networks and technological capabilities combined with new funding models open a unique window of opportunity. MOSAIC is a program to catalyze the networked science revolution at a time when it has never been more needed.
+We have long had the vision and theory for networked science, but lacked the means to implement it. New protocols, networks and technological capabilities, combined with new funding models, open a unique window of opportunity. MOSAIC is a program to catalyze the networked science revolution at a time when it has never been more needed.
 
 ### partners-heading
 Partners

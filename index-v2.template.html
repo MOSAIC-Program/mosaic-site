@@ -72,6 +72,32 @@
   summary.bio-trigger { cursor: pointer; list-style: none; }
   summary.bio-trigger::-webkit-details-marker { display: none; }
   summary.bio-trigger:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .footnote { position: relative; display: inline-block; cursor: help; }
+  .footnote-marker { font-size: 0.7em; vertical-align: super; color: var(--gold-ink); border-bottom: 1px dotted var(--gold-ink); padding-bottom: 0.05em; }
+  .footnote-tooltip {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: min(320px, 80vw);
+    margin-bottom: 8px;
+    padding: 10px 12px;
+    background: var(--ground-2);
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.45;
+    text-align: left;
+    text-wrap: pretty;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px oklch(0% 0 0 / 0.18);
+    z-index: 20;
+    white-space: normal;
+  }
+  .footnote:hover .footnote-tooltip, .footnote:focus-within .footnote-tooltip { display: block; }
   #mosaic-content strong { font-weight: 600; color: var(--ink); }
   @keyframes tessera-settle {
     from { opacity: 0; transform: translateY(7px) rotate(-5deg) scale(0.93); }

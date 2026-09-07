@@ -20,6 +20,10 @@ const PROVISIONAL_BADGE_STYLE =
   'color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); ' +
   'border-radius: 2px; padding: 0.25em 0.5em;';
 
+// Global counter so footnote numbers stay sequential across the whole
+// document (sections are rendered in the order they appear in the template).
+let footnoteIndex = 0;
+
 function escapeHtml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -58,6 +62,15 @@ function renderInline(raw) {
   text = text.replace(/\{\{provisional:\s*([\s\S]*?)\}\}/g, (_, inner) =>
     `<span data-provisional="true" title="Unresolved placeholder" style="${PROVISIONAL_INLINE_STYLE}">${inner.trim()}</span>`
   );
+
+  // {{footnote: <note text>}} — renders as a numbered superscript that
+  // reveals the note in a hover tooltip (pure CSS, no separate footnotes
+  // section). tabindex makes it reachable/hover-equivalent via keyboard.
+  text = text.replace(/\{\{footnote:\s*([\s\S]*?)\}\}/g, (_, inner) => {
+    footnoteIndex += 1;
+    const note = inner.trim().replace(/\s+/g, ' ');
+    return `<span class="footnote" tabindex="0"><sup class="footnote-marker">${footnoteIndex}</sup><span class="footnote-tooltip">${note}</span></span>`;
+  });
 
   // ![alt](src) — must run before [text](url) so the outer link syntax
   // (if the image is wrapped in one) still matches correctly.
@@ -133,6 +146,7 @@ function renderPartners(raw) {
 }
 
 function main() {
+  footnoteIndex = 0;
   const md = fs.readFileSync(CONTENT_PATH, 'utf8');
   const template = fs.readFileSync(TEMPLATE_PATH, 'utf8');
   const sections = parseSections(md);
