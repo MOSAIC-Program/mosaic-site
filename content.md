@@ -92,7 +92,7 @@ Three mutually reinforcing developments are converging to create a unique opport
 Networked research won't emerge on its own, but cutting edge philanthropy is uniquely positioned to catalyze it.
 
 ### catalyze-body
-Networked research, which thrives on openness and large-scale collaborative ecosystems, has also long been blocked by an infrastructure funding gap. Academia and small non-profits lack the engineering capacity to build it. Startups need near-term returns and, like the incumbent platforms, depend on moats and data enclosure. [Catalytic philanthropy](https://renaissancephilanthropy.substack.com/p/philanthropy-20-what-the-evolution), such as deployed by Renaissance Philanthropy, is the unlock: it can fund at the scale infrastructure requires, tolerate long time horizons that the market cannot, and build a field rather than just products.
+Networked research, which thrives on openness and large-scale collaborative ecosystems, has also long been blocked by an infrastructure funding gap. Academia and small non-profits lack the engineering capacity to build it. Startups need near-term returns and, like the incumbent platforms, depend on moats and data enclosure. [Catalytic philanthropy](https://renaissancephilanthropy.substack.com/p/philanthropy-20-what-the-evolution), such as deployed by Renaissance Philanthropy, is the unlock: it can fund at the scale infrastructure requires, tolerate long time horizons that the market cannot, and build ecosystems rather than just products.
 
 ### started-heading
 We've already started.
