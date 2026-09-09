@@ -87,16 +87,32 @@
     --sans: 'Source Sans 3', system-ui, sans-serif;
     --gutter: clamp(20px, 5vw, 48px);
     --r: 3px;
+    /* Type scale, named by role */
+    --fs-caption: 0.8125rem;
+    --fs-small: 0.9375rem;
+    --fs-ui: 1rem;
+    --fs-card: 1.0625rem;
+    --fs-body: clamp(1.0625rem, 1.4vw, 1.2rem);
+    --fs-intro: clamp(1.125rem, 2vw, 1.3rem);
+    --fs-lede: clamp(1.3rem, 2.4vw, 1.6rem);
+    --fs-h3: 1.4rem;
+    --fs-h2-index: clamp(1.5rem, 3vw, 2rem);
+    --fs-h2: clamp(1.9rem, 4.5vw, 2.7rem);
+    --fs-quote: clamp(1.5rem, 4vw, 2.25rem);
+    --fs-tagline: clamp(1.25rem, 3.4vw, 2.1rem);
+    --fs-display: clamp(3.5rem, 15vw, 9.5rem);
     background: var(--ground);
     color: var(--ink);
     font-family: var(--sans);
     font-size: 18px;
     line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
   }
 
   /* ---- Base ---- */
-  a { color: var(--lapis); text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color .15s ease-out; }
+  a { color: var(--lapis); text-decoration-thickness: from-font; text-underline-offset: 0.15em; text-decoration-skip-ink: auto; transition: color .15s ease-out; }
   a:hover { color: var(--gold-ink); }
   ::selection { background: oklch(74% 0.12 86 / 0.35); }
   #mosaic-content strong { font-weight: 600; color: var(--ink); }
@@ -114,27 +130,27 @@
   .icon { flex: none; opacity: 0.6; }
 
   /* ---- Type ---- */
-  .h2, .h2-index, .h3 { font-family: var(--serif); font-weight: 500; text-wrap: pretty; }
-  .h2 { font-size: clamp(1.9rem, 4.5vw, 2.7rem); line-height: 1.14; letter-spacing: -0.018em; margin: 0 0 1.2rem; }
-  .h2-index { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; margin: 0 0 clamp(24px, 4vh, 40px); }
+  .h2, .h2-index, .h3 { font-family: var(--serif); font-weight: 500; text-wrap: balance; }
+  .h2 { font-size: var(--fs-h2); line-height: 1.14; letter-spacing: -0.018em; margin: 0 0 1.2rem; }
+  .h2-index { font-size: var(--fs-h2-index); line-height: 1.2; margin: 0 0 clamp(24px, 4vh, 40px); }
   .h2--spaced { margin-bottom: clamp(32px, 6vh, 56px); }
-  .h3 { font-size: 1.4rem; line-height: 1.25; margin: 0 0 0.6rem; }
-  .prose p { margin: 0; font-size: clamp(1.0625rem, 1.4vw, 1.2rem); line-height: 1.65; text-wrap: pretty; }
+  .h3 { font-size: var(--fs-h3); line-height: 1.25; margin: 0 0 0.6rem; }
+  .prose p { margin: 0; font-size: var(--fs-body); line-height: 1.65; text-wrap: pretty; }
   .prose p + p { margin-top: 1.35em; }
-  .prose--small p { font-size: 1.0625rem; line-height: 1.6; }
-  .lede { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(1.3rem, 2.4vw, 1.6rem); line-height: 1.4; color: var(--lapis); margin: 1.35em 0 0; text-wrap: pretty; }
+  .prose--small p { font-size: var(--fs-card); line-height: 1.6; }
+  .lede { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: var(--fs-lede); line-height: 1.4; color: var(--lapis); margin: 1.35em 0 0; text-wrap: pretty; }
   .anchor-heading { scroll-margin-top: 24px; }
   .anchor-link { margin-left: 0.4em; font-size: 0.62em; font-weight: 400; vertical-align: middle; text-decoration: none; color: var(--muted); opacity: 0; transition: opacity .15s ease-out; }
   .anchor-heading:hover .anchor-link, .anchor-link:focus-visible { opacity: 1; }
 
   /* ---- Header ---- */
   .site-header { display: flex; align-items: center; gap: 12px 28px; padding: 18px var(--gutter); max-width: 1240px; margin: 0 auto; border-bottom: 1px solid var(--hair); }
-  .wordmark { font-family: var(--serif); font-size: 1.0625rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+  .wordmark { font-family: var(--serif); font-size: var(--fs-card); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
   .wordmark:hover { color: var(--ink); }
   .site-nav { flex: 1 1 auto; }
   .site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px clamp(16px, 2.4vw, 28px); }
-  .site-nav a { font-size: 1rem; }
-  .theme-toggle { flex: none; background: transparent; border: 1px solid var(--hair); border-radius: var(--r); color: var(--muted); font-family: var(--sans); font-size: 0.875rem; font-weight: 500; line-height: 1; padding: 8px 12px; cursor: pointer; transition: border-color .15s ease-out, color .15s ease-out; }
+  .site-nav a { font-size: var(--fs-ui); }
+  .theme-toggle { flex: none; background: transparent; border: 1px solid var(--hair); border-radius: var(--r); color: var(--muted); font-family: var(--sans); font-size: var(--fs-small); font-weight: 500; line-height: 1; padding: 8px 12px; cursor: pointer; transition: border-color .15s ease-out, color .15s ease-out; }
   .theme-toggle:hover { border-color: var(--gold); color: var(--gold-ink); }
   @media (max-width: 560px) {
     .site-header { flex-wrap: wrap; gap: 14px 16px; }
@@ -155,15 +171,15 @@
     .hero-field svg { translate: 320px 0; }
   }
   .hero-inner { position: relative; }
-  .hero-title { font-family: var(--serif); font-weight: 400; font-size: clamp(3.5rem, 15vw, 9.5rem); line-height: 0.95; letter-spacing: -0.02em; margin: 0; color: var(--ink); }
-  .hero-tagline { font-family: var(--serif); font-weight: 300; font-size: clamp(1.25rem, 3.4vw, 2.1rem); line-height: 1.3; letter-spacing: -0.01em; color: var(--muted); margin: clamp(16px, 3vw, 28px) 0 0; max-width: 26ch; text-wrap: pretty; }
-  .hero-intro { margin: clamp(28px, 5vw, 44px) 0 0; max-width: 42em; font-size: clamp(1.125rem, 2vw, 1.3rem); line-height: 1.6; text-wrap: pretty; }
+  .hero-title { font-family: var(--serif); font-weight: 400; font-size: var(--fs-display); line-height: 0.95; letter-spacing: -0.02em; margin: 0; color: var(--ink); }
+  .hero-tagline { font-family: var(--serif); font-weight: 300; font-size: var(--fs-tagline); line-height: 1.3; letter-spacing: -0.01em; color: var(--muted); margin: clamp(16px, 3vw, 28px) 0 0; max-width: 26ch; text-wrap: balance; }
+  .hero-intro { margin: clamp(28px, 5vw, 44px) 0 0; max-width: 34em; font-size: var(--fs-intro); line-height: 1.6; text-wrap: pretty; }
   .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin: clamp(24px, 4vw, 36px) 0 0; }
-  .cta-secondary { display: inline-flex; align-items: center; gap: 6px; font-size: 1rem; }
-  .credit { margin: clamp(32px, 5vw, 48px) 0 0; display: inline-block; font-size: clamp(0.8125rem, 1.3vw, 0.9375rem); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); border-top: 2px solid var(--gold); padding-top: 14px; }
+  .cta-secondary { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-ui); }
+  .credit { margin: clamp(32px, 5vw, 48px) 0 0; display: inline-block; font-size: clamp(var(--fs-caption), 1.3vw, var(--fs-small)); line-height: 1.5; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); border-top: 2px solid var(--gold); padding-top: 14px; }
 
   /* ---- Buttons ---- */
-  .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--lapis); color: var(--ground); font-family: var(--sans); font-weight: 600; font-size: 1rem; letter-spacing: 0.02em; padding: 13px 24px; border-radius: var(--r); text-decoration: none; transition-property: background-color, scale; transition-duration: .18s, .12s; transition-timing-function: ease-out; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--lapis); color: var(--ground); font-family: var(--sans); font-weight: 600; font-size: var(--fs-ui); padding: 13px 24px; border-radius: var(--r); text-decoration: none; transition-property: background-color, scale; transition-duration: .18s, .12s; transition-timing-function: ease-out; }
   .btn:hover { background: var(--gold-ink); color: var(--ground); }
   .btn:active { scale: 0.96; }
   .btn .icon { opacity: 0.75; }
@@ -192,29 +208,29 @@
   @media (max-width: 560px) { .started-grid { grid-template-columns: 1fr; } }
   .card { border-top: 1px solid var(--hair); padding-top: 20px; }
   .structure-grid { width: 100%; max-width: 940px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(32px, 5vw, 64px); }
-  .structure-grid .h3 { font-size: clamp(1.5rem, 2.6vw, 1.8rem); line-height: 1.2; margin-bottom: 0.75rem; }
+  .structure-grid .h3 { font-size: var(--fs-h2-index); line-height: 1.2; margin-bottom: 0.75rem; }
   .content-logo { height: 48px; width: auto; max-width: 100%; vertical-align: middle; }
   [data-theme="dark"] .content-logo { filter: invert(1); }
 
   /* ---- Quote ---- */
   .pull-quote { margin: 0 0 clamp(36px, 6vh, 60px); border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); padding: clamp(28px, 5vh, 48px) 0; }
   .pull-quote blockquote { margin: 0; }
-  .pull-quote blockquote p { font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem, 4vw, 2.25rem); line-height: 1.32; letter-spacing: -0.012em; margin: 0; text-wrap: pretty; }
-  .pull-quote figcaption { margin-top: clamp(18px, 3vh, 28px); font-size: 0.9375rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .pull-quote blockquote p { font-family: var(--serif); font-weight: 400; font-size: var(--fs-quote); line-height: 1.32; letter-spacing: -0.012em; margin: 0; text-wrap: balance; }
+  .pull-quote figcaption { margin-top: clamp(18px, 3vh, 28px); font-size: var(--fs-small); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 
   /* ---- Team ---- */
   .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(28px, 5vw, 48px); }
   .person-head { display: flex; gap: 18px; align-items: center; }
   .avatar { flex: none; width: 72px; height: 72px; object-fit: cover; border-radius: 50%; outline: 1px solid var(--img-outline); outline-offset: -1px; }
-  .person .h3 { font-size: 1.3rem; line-height: 1.2; margin: 0; }
+  .person .h3 { line-height: 1.2; margin: 0; }
   .person .h3 a { color: var(--lapis); }
   .person .h3 a:hover { color: var(--gold-ink); }
-  .bio { margin: 14px 0 0; font-size: 1rem; line-height: 1.6; color: var(--muted); text-wrap: pretty; }
+  .bio { margin: 14px 0 0; font-size: var(--fs-ui); line-height: 1.6; color: var(--muted); text-wrap: pretty; }
 
   /* ---- Partners ---- */
   .partner-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); grid-auto-rows: minmax(88px, auto); gap: 10px; }
   .partner-grid li { padding: 0; }
-  .partner-tile { display: flex; align-items: center; justify-content: center; height: 100%; padding: 18px 20px; background: var(--ground-2); border-radius: var(--r); font-family: var(--serif); font-size: 1.25rem; line-height: 1.2; text-decoration: none; color: inherit; }
+  .partner-tile { display: flex; align-items: center; justify-content: center; height: 100%; padding: 18px 20px; background: var(--ground-2); border-radius: var(--r); font-family: var(--serif); font-size: var(--fs-h3); line-height: 1.2; text-decoration: none; color: inherit; }
   .partner-tile--text, .partner-tile--provisional { justify-content: flex-start; }
   .partner-tile img { max-width: 100%; max-height: 36px; object-fit: contain; filter: grayscale(1); opacity: 0.72; transition: filter .2s ease-out, opacity .2s ease-out; }
   a.partner-tile:hover img { filter: grayscale(0); opacity: 1; }
@@ -223,11 +239,11 @@
 
   /* ---- Provisional markers (emitted by build-content.js) ---- */
   .provisional { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; line-height: 1.5; color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: var(--r); padding: 0.15em 0.4em; }
-  .provisional-badge { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: var(--r); padding: 0.25em 0.5em; }
+  .provisional-badge { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: var(--fs-caption); color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: var(--r); padding: 0.25em 0.5em; }
 
   /* ---- Footnotes ---- */
   .footnote { position: relative; display: inline-block; cursor: help; }
-  .footnote-marker { font-size: 0.7em; vertical-align: super; color: var(--gold-ink); border-bottom: 1px dotted var(--gold-ink); padding-bottom: 0.05em; }
+  .footnote-marker { font-size: 0.7em; line-height: 0; vertical-align: super; color: var(--gold-ink); text-decoration: underline dotted; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
   .footnote-tooltip {
     position: absolute;
     left: 50%;
@@ -238,7 +254,7 @@
     padding: 10px 12px;
     background: var(--ground-2);
     color: var(--muted);
-    font-size: 0.8rem;
+    font-size: var(--fs-caption);
     font-style: italic;
     font-weight: 400;
     line-height: 1.45;
@@ -262,7 +278,7 @@
   .connect .prose p { margin-bottom: clamp(28px, 5vw, 40px); }
   .site-footer { padding: clamp(28px, 5vh, 44px) var(--gutter) clamp(40px, 7vh, 64px); border-top: 1px solid var(--hair); }
   .site-footer .wrap { display: flex; justify-content: center; }
-  .footer-link { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.9375rem; }
+  .footer-link { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: var(--fs-small); }
   .footer-link:hover { color: var(--gold-ink); }
 </style>
 </helmet>
@@ -296,30 +312,30 @@
 
   <section class="section section--first">
     <div class="measure prose">
-      <h2 id="bottleneck" class="h2 anchor-heading">Coordination is science's biggest bottleneck.<a href="#bottleneck" class="anchor-link" aria-label="Link to this section">#</a></h2>
-      <p>AI is making individual scientists dramatically more productive. But the coordination system that turns individual work into collective knowledge — how we share, evaluate, and build on each other's research — has barely evolved at all. As a result, science has no way to metabolize individual productivity into collective progress, and increasingly no way to tell progress from plausible noise.</p>
+      <h2 id="bottleneck" class="h2 anchor-heading">Coordination is science’s biggest bottleneck.<a href="#bottleneck" class="anchor-link" aria-label="Link to this section">#</a></h2>
+      <p>AI is making individual scientists dramatically more productive. But the coordination system that turns individual work into collective knowledge — how we share, evaluate, and build on each other’s research — has barely evolved at all. As a result, science has no way to metabolize individual productivity into collective progress, and increasingly no way to tell progress from plausible noise.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="measure prose">
-      <h2 id="medium" class="h2 anchor-heading">Coordination requires a medium. The medium of science hasn't changed in centuries, and it is breaking.<a href="#medium" class="anchor-link" aria-label="Link to this section">#</a></h2>
-      <p>The internet revolutionized how knowledge is created and shared. Today's AI is only possible due to the vast repositories of human knowledge it made openly readable. Social media demonstrates the vast potential of real-time global-scale discourse. But science has barely moved: the paper is still the only recognized unit of science and has not meaningfully changed in centuries. Papers bear the full load of the scientific process — disseminating results, communicating ideas, evaluating quality, assigning credit — but they are ill-suited for the speed, scale and complexity of today's challenges.</p>
+      <h2 id="medium" class="h2 anchor-heading">Coordination requires a medium. The medium of science hasn’t changed in centuries, and it is breaking.<a href="#medium" class="anchor-link" aria-label="Link to this section">#</a></h2>
+      <p>The internet revolutionized how knowledge is created and shared. Today’s AI is only possible due to the vast repositories of human knowledge it made openly readable. Social media demonstrates the vast potential of real-time global-scale discourse. But science has barely moved: the paper is still the only recognized unit of science and has not meaningfully changed in centuries. Papers bear the full load of the scientific process — disseminating results, communicating ideas, evaluating quality, assigning credit — but they are ill-suited for the speed, scale and complexity of today’s challenges.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="measure prose">
       <h2 id="networked" class="h2 anchor-heading">The next medium for science is networked.<a href="#networked" class="anchor-link" aria-label="Link to this section">#</a></h2>
-      <p>In 2011, Michael Nielsen's <em>Reinventing Discovery: The New Era of Networked Science</em> introduced the idea of <strong>networked science</strong><span class="footnote" tabindex="0"><sup class="footnote-marker">1</sup><span class="footnote-tooltip">We use "networked research" and "networked science" somewhat interchangeably: "networked science" is more faithful to Nielsen's original conception, but "research" is more suitable for our purposes since it captures a wider range of scholarly activities.</span></span>. He argued that the internet and open online collaboration could democratize and accelerate science by applying the coordination patterns behind successful large scale projects like Wikipedia and Linux: composable and modular micro-contributions, low contribution barriers, networked in the open, at enormous scale. Despite some initial encouraging examples like preprint servers and citizen science projects, Nielsen's own assessment was that we had fallen far short of the potential for networked science. It still holds.</p>
-      <p class="lede">The vision was brilliant. But the right substrate didn't exist.</p>
+      <p>In 2011, Michael Nielsen’s <em>Reinventing Discovery: The New Era of Networked Science</em> introduced the idea of <strong>networked science</strong><span class="footnote" tabindex="0"><sup class="footnote-marker">1</sup><span class="footnote-tooltip">We use “networked research” and “networked science” somewhat interchangeably: “networked science” is more faithful to Nielsen’s original conception, but “research” is more suitable for our purposes since it captures a wider range of scholarly activities.</span></span>. He argued that the internet and open online collaboration could democratize and accelerate science by applying the coordination patterns behind successful large scale projects like Wikipedia and Linux: composable and modular micro-contributions, low contribution barriers, networked in the open, at enormous scale. Despite some initial encouraging examples like preprint servers and citizen science projects, Nielsen’s own assessment was that we had fallen far short of the potential for networked science. It still holds.</p>
+      <p class="lede">The vision was brilliant. But the right substrate didn’t exist.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="measure prose">
       <h2 id="build" class="h2 anchor-heading">MOSAIC is a program to build it.<a href="#build" class="anchor-link" aria-label="Link to this section">#</a></h2>
-      <p>MOSAIC (Modular Open Science, AI &amp; Collective Intelligence) is an R&amp;D program to realize the vision of networked science. MOSAIC was incubated at Renaissance Philanthropy's Big if True Science accelerator (BiTS), a fellowship for scientists and technologists to design ambitious R&amp;D programs.</p>
+      <p>MOSAIC (Modular Open Science, AI &amp; Collective Intelligence) is an R&amp;D program to realize the vision of networked science. MOSAIC was incubated at Renaissance Philanthropy’s Big if True Science accelerator (BiTS), a fellowship for scientists and technologists to design ambitious R&amp;D programs.</p>
       <p>Our Big if True hypothesis is that <strong>an intentionally designed networked research medium will enable humans and agents to solve crucial coordination challenges and radically accelerate breakthroughs.</strong></p>
     </div>
   </section>
@@ -335,11 +351,11 @@
     <ol class="dev-list">
       <li>
         <div class="dev-figure" aria-hidden="true">{{ conv1 }}</div>
-        <div class="dev-body prose"><p class="dev-text"><strong>Modular research tools</strong> (such as Discourse Graphs and Nanopublications) are making it possible to represent the actual process of research (hypotheses, questions, critiques, evidence, etc) as reusable, machine-readable units rather than burying them inside monolithic papers. Early Discourse Graph deployments are showing promising evidence that these tools help researchers think and collaborate better.<br><br><em>"Even in the limited time I've used Discourse Graphs, I've found huge improvements in my thinking and doing of science."</em> — Pilot user</p></div>
+        <div class="dev-body prose"><p class="dev-text"><strong>Modular research tools</strong> (such as Discourse Graphs and Nanopublications) are making it possible to represent the actual process of research (hypotheses, questions, critiques, evidence, etc) as reusable, machine-readable units rather than burying them inside monolithic papers. Early Discourse Graph deployments are showing promising evidence that these tools help researchers think and collaborate better.<br><br><em>“Even in the limited time I’ve used Discourse Graphs, I’ve found huge improvements in my thinking and doing of science.”</em> — Pilot user</p></div>
       </li>
       <li>
         <div class="dev-figure" aria-hidden="true">{{ conv2 }}</div>
-        <div class="dev-body prose"><p class="dev-text"><strong>Protocol-based social networks</strong> such as <a href="https://atproto.com/" target="_blank" rel="noopener noreferrer">AT Protocol</a> (powering the Bluesky platform) are a credible alternative to closed platforms, and large science communities have already moved there. Scientific micro-contributions already happen on social media — discussion, data sharing, and meaningful real-time evaluation of research. However, on <em>legacy</em> social media we lack the means to recognize these contributions as such: data is locked in closed platforms, and rich social media discourse is flattened into "research mentions". New forms of coordination require new protocols, hence the <strong>open protocol architecture is a key unlock.</strong> In practice, it enables not just rebuilding "Science Twitter", but evolving whole new apps and services for research, on open-source and decentralized infrastructure. Demonstrating this is the <a href="https://atproto.science/ecosystem/" target="_blank" rel="noopener noreferrer">AT Protocol science ecosystem</a>, described <a href="#started">below</a>, which has grown to more than 30 interoperating apps spanning the research lifecycle.<br><br><em>"The properties that make AT Protocol compelling for social networking are the same properties the research community has been asking for"</em> — <a href="https://oxa.dev/articles/oxa-on-at-proto" target="_blank" rel="noopener noreferrer">Scientific Documents as First-Class Objects on AT Protocol</a></p></div>
+        <div class="dev-body prose"><p class="dev-text"><strong>Protocol-based social networks</strong> such as <a href="https://atproto.com/" target="_blank" rel="noopener noreferrer">AT Protocol</a> (powering the Bluesky platform) are a credible alternative to closed platforms, and large science communities have already moved there. Scientific micro-contributions already happen on social media — discussion, data sharing, and meaningful real-time evaluation of research. However, on <em>legacy</em> social media we lack the means to recognize these contributions as such: data is locked in closed platforms, and rich social media discourse is flattened into “research mentions”. New forms of coordination require new protocols, hence the <strong>open protocol architecture is a key unlock.</strong> In practice, it enables not just rebuilding “Science Twitter”, but evolving whole new apps and services for research, on open-source and decentralized infrastructure. Demonstrating this is the <a href="https://atproto.science/ecosystem/" target="_blank" rel="noopener noreferrer">AT Protocol science ecosystem</a>, described <a href="#started">below</a>, which has grown to more than 30 interoperating apps spanning the research lifecycle.<br><br><em>“The properties that make AT Protocol compelling for social networking are the same properties the research community has been asking for”</em> — <a href="https://oxa.dev/articles/oxa-on-at-proto" target="_blank" rel="noopener noreferrer">Scientific Documents as First-Class Objects on AT Protocol</a></p></div>
       </li>
       <li>
         <div class="dev-figure" aria-hidden="true">{{ conv3 }}</div>
@@ -352,15 +368,15 @@
 
   <section class="section">
     <div class="measure prose">
-      <h2 id="catalyze" class="h2 anchor-heading">Networked research won't emerge on its own, but cutting edge philanthropy is uniquely positioned to catalyze it.<a href="#catalyze" class="anchor-link" aria-label="Link to this section">#</a></h2>
+      <h2 id="catalyze" class="h2 anchor-heading">Networked research won’t emerge on its own, but cutting edge philanthropy is uniquely positioned to catalyze it.<a href="#catalyze" class="anchor-link" aria-label="Link to this section">#</a></h2>
       <p>Networked research, which thrives on openness and large-scale collaborative ecosystems, has also long been blocked by an infrastructure funding gap. Academia and small non-profits lack the engineering capacity to build it. Startups need near-term returns and, like the incumbent platforms, depend on moats and data enclosure. <a href="https://renaissancephilanthropy.substack.com/p/philanthropy-20-what-the-evolution" target="_blank" rel="noopener noreferrer">Catalytic philanthropy</a>, such as deployed by Renaissance Philanthropy, is the unlock: it can fund at the scale infrastructure requires, tolerate long time horizons that the market cannot, and build ecosystems rather than just products.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="measure measure--lead prose">
-      <h2 id="started" class="h2 anchor-heading">We've already started.<a href="#started" class="anchor-link" aria-label="Link to this section">#</a></h2>
-      <p>Between us, we've spent over a decade building the products, ecosystems, and networks that MOSAIC is rooted in.</p>
+      <h2 id="started" class="h2 anchor-heading">We’ve already started.<a href="#started" class="anchor-link" aria-label="Link to this section">#</a></h2>
+      <p>Between us, we’ve spent over a decade building the products, ecosystems, and networks that MOSAIC is rooted in.</p>
     </div>
     <div class="started-grid">
       <article class="card prose prose--small">
@@ -381,7 +397,7 @@
       </article>
     </div>
     <div class="measure measure--trail prose">
-      <p>These are the seeds. MOSAIC's mission is weaving them into a coherent “networked research stack” and getting them to critical mass through funding and deliberate field building.</p>
+      <p>These are the seeds. MOSAIC’s mission is weaving them into a coherent “networked research stack” and getting them to critical mass through funding and deliberate field building.</p>
     </div>
   </section>
 
@@ -414,7 +430,7 @@
         </blockquote>
         <figcaption>— Michael Nielsen, Reinventing Discovery</figcaption>
       </figure>
-      <p>There is a direct path connecting Nielsen's networked science with the growing sense that the next scientific revolutions <a href="https://catalyzernd.substack.com/p/rebuilding-the-architecture-of-science" target="_blank" rel="noopener noreferrer">will not be achieved only by funding elite labs or startups, but by rearchitecting science</a> and by developing new <a href="https://www.shishyko.com/supercritical/" target="_blank" rel="noopener noreferrer">infrastructure</a> and <a href="https://uniconq.substack.com/p/the-ground-truth-institute" target="_blank" rel="noopener noreferrer">institutions</a> for coordination. Coordination failure was the <a href="https://asterainstitute.substack.com/p/what-scientists-said-results-from" target="_blank" rel="noopener noreferrer">single most common theme</a> named across nearly two hundred essays in a meta-science competition hosted recently by the Astera Institute: "the absence of any mechanism for doing collectively what no individual lab or team can do alone."</p>
+      <p>There is a direct path connecting Nielsen’s networked science with the growing sense that the next scientific revolutions <a href="https://catalyzernd.substack.com/p/rebuilding-the-architecture-of-science" target="_blank" rel="noopener noreferrer">will not be achieved only by funding elite labs or startups, but by rearchitecting science</a> and by developing new <a href="https://www.shishyko.com/supercritical/" target="_blank" rel="noopener noreferrer">infrastructure</a> and <a href="https://uniconq.substack.com/p/the-ground-truth-institute" target="_blank" rel="noopener noreferrer">institutions</a> for coordination. Coordination failure was the <a href="https://asterainstitute.substack.com/p/what-scientists-said-results-from" target="_blank" rel="noopener noreferrer">single most common theme</a> named across nearly two hundred essays in a meta-science competition hosted recently by the Astera Institute: “the absence of any mechanism for doing collectively what no individual lab or team can do alone.”</p>
       <p>We have long had the vision and theory for networked science, but lacked the means to implement it. New protocols, networks and technological capabilities, combined with new funding models, open a unique window of opportunity. MOSAIC is a program to catalyze the networked science revolution at a time when it has never been more needed.</p>
     </div>
   </section>
@@ -428,14 +444,14 @@
             <img class="avatar" src="./images/ronen-tamari.png" alt="Ronen Tamari">
             <h3 class="h3"><a href="https://ronentk.me/" target="_blank" rel="noopener noreferrer">Ronen Tamari</a></h3>
           </div>
-          <p class="bio">Ronen is a collective intelligence researcher and entrepreneur. He completed an Open Science fellowship at the Astera Institute, and is a co-founder of multiple metascience startups and initiatives, including <a href="https://cosmik.network/" target="_blank" rel="noopener noreferrer">Cosmik</a> and <a href="https://atproto.science/ecosystem/" target="_blank" rel="noopener noreferrer">ATProto Science</a>. Ronen's work is supported by Astera and Coefficient Giving. Ronen also holds a PhD in AI from the Hebrew University of Jerusalem.</p>
+          <p class="bio">Ronen is a collective intelligence researcher and entrepreneur. He completed an Open Science fellowship at the Astera Institute, and is a co-founder of multiple metascience startups and initiatives, including <a href="https://cosmik.network/" target="_blank" rel="noopener noreferrer">Cosmik</a> and <a href="https://atproto.science/ecosystem/" target="_blank" rel="noopener noreferrer">ATProto Science</a>. Ronen’s work is supported by Astera and Coefficient Giving. Ronen also holds a PhD in AI from the Hebrew University of Jerusalem.</p>
         </div>
         <div class="person">
           <div class="person-head">
             <img class="avatar" src="./images/francisco-carvalho.png" alt="Francisco Carvalho">
             <h3 class="h3"><a href="https://xiqo.substack.com/" target="_blank" rel="noopener noreferrer">Francisco Carvalho</a></h3>
           </div>
-          <p class="bio">Francisco is a collective intelligence researcher and tools-for-thought builder. He has worked at METR and the EU AI Office, and founded the Twitter Community Archive, an open data commons for a distributed community of independent researchers. Francisco's work is supported by Vitalik Buterin and the Survival and Flourishing Fund.</p>
+          <p class="bio">Francisco is a collective intelligence researcher and tools-for-thought builder. He has worked at METR and the EU AI Office, and founded the Twitter Community Archive, an open data commons for a distributed community of independent researchers. Francisco’s work is supported by Vitalik Buterin and the Survival and Flourishing Fund.</p>
         </div>
       </div>
     </div>
@@ -458,7 +474,7 @@
   <section id="connect" class="section section--index connect">
     <div class="measure measure--short prose">
       <h2 class="h2-index anchor-heading">Connect<a href="#connect" class="anchor-link" aria-label="Link to this section">#</a></h2>
-      <p>Interested in MOSAIC? Want to partner with us or support the program? We'd love to hear from you.</p>
+      <p>Interested in MOSAIC? Want to partner with us or support the program? We’d love to hear from you.</p>
       <a href="https://forms.mosaic-program.org/connect" target="_blank" rel="noopener noreferrer" class="btn">Get in touch</a>
     </div>
   </section>

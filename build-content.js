@@ -46,8 +46,18 @@ function stripComments(text) {
   return text.replace(/<!--[\s\S]*?-->/g, '').trim();
 }
 
+// Copy is written with straight quotes; the page renders curly ones.
+// Runs on the raw text before any HTML (with its attribute quotes) is emitted.
+function smartQuotes(text) {
+  return text
+    .replace(/(^|[\s(\[*_])"/g, '$1\u201C')
+    .replace(/"/g, '\u201D')
+    .replace(/(^|[\s(\[*_])'/g, '$1\u2018')
+    .replace(/'/g, '\u2019');
+}
+
 function renderInline(raw) {
-  let text = escapeHtml(raw);
+  let text = smartQuotes(escapeHtml(raw));
 
   // {{provisional: <text>}}
   text = text.replace(/\{\{provisional:\s*([\s\S]*?)\}\}/g, (_, inner) =>
