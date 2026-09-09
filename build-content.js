@@ -10,15 +10,6 @@ const CONTENT_PATH = path.join(DIR, 'content.md');
 const TEMPLATE_PATH = path.join(DIR, 'index-v2.template.html');
 const OUTPUT_PATH = path.join(DIR, 'index.html');
 
-const PROVISIONAL_INLINE_STYLE =
-  'font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; ' +
-  'line-height: 1.5; color: var(--terracotta); background: var(--prov-bg); ' +
-  'box-shadow: inset 0 0 0 1px var(--prov-line); border-radius: 2px; padding: 0.15em 0.4em;';
-
-const PROVISIONAL_BADGE_STYLE =
-  'font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; ' +
-  'color: var(--terracotta); background: var(--prov-bg); box-shadow: inset 0 0 0 1px var(--prov-line); ' +
-  'border-radius: 2px; padding: 0.25em 0.5em;';
 
 // Global counter so footnote numbers stay sequential across the whole
 // document (sections are rendered in the order they appear in the template).
@@ -60,7 +51,7 @@ function renderInline(raw) {
 
   // {{provisional: <text>}}
   text = text.replace(/\{\{provisional:\s*([\s\S]*?)\}\}/g, (_, inner) =>
-    `<span data-provisional="true" title="Unresolved placeholder" style="${PROVISIONAL_INLINE_STYLE}">${inner.trim()}</span>`
+    `<span class="provisional" data-provisional="true" title="Unresolved placeholder">${inner.trim()}</span>`
   );
 
   // {{footnote: <note text>}} — renders as a numbered superscript that
@@ -75,7 +66,7 @@ function renderInline(raw) {
   // ![alt](src) — must run before [text](url) so the outer link syntax
   // (if the image is wrapped in one) still matches correctly.
   text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) =>
-    `<img src="${src}" alt="${alt}" class="content-logo" style="height: 48px; width: auto; max-width: 100%; vertical-align: middle;">`
+    `<img src="${src}" alt="${alt}" class="content-logo">`
   );
 
   // [text](url)
@@ -125,22 +116,23 @@ function renderPartners(raw) {
 
     let inner;
     if (provisional) {
-      inner = `<span data-provisional="true" title="Unconfirmed partner" style="${PROVISIONAL_BADGE_STYLE}">${name}?</span>`;
+      inner = `<span class="provisional-badge" data-provisional="true" title="Unconfirmed partner">${name}?</span>`;
     } else if (hasLogo) {
-      inner = `<img src="./images/partners/${escapeHtml(logoFile)}" alt="${name}" style="max-width: 100%; max-height: 36px; object-fit: contain; filter: grayscale(1); opacity: 0.72; transition: filter .2s ease, opacity .2s ease;">`;
+      inner = `<img src="./images/partners/${escapeHtml(logoFile)}" alt="${name}">`;
     } else {
       inner = name;
     }
 
-    const justify = hasLogo && !provisional ? 'justify-content: center;' : '';
-    const tileStyle = `display: flex; align-items: center; ${justify} height: 100%; box-sizing: border-box; padding: 18px 20px; background: var(--ground-2); font-family: Newsreader, Georgia, serif; font-size: 1.25rem; line-height: 1.2;`;
+    // Tile styling lives in the template stylesheet (.partner-tile and its
+    // modifiers) so the build only decides the markup.
+    const classes = ['partner-tile'];
+    if (provisional) classes.push('partner-tile--provisional');
+    else if (!hasLogo) classes.push('partner-tile--text');
 
     const tag = url ? 'a' : 'div';
     const linkAttrs = url ? ` href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer"` : '';
-    const cls = url && hasLogo && !provisional ? ' class="partner-tile"' : '';
-    const linkStyle = url ? ' text-decoration: none; color: inherit;' : '';
 
-    return `        <li style="padding: 0;"><${tag}${cls}${linkAttrs} style="${tileStyle}${linkStyle}">${inner}</${tag}></li>`;
+    return `        <li><${tag} class="${classes.join(' ')}"${linkAttrs}>${inner}</${tag}></li>`;
   });
   return items.join('\n');
 }
