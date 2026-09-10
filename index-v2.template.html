@@ -7,9 +7,9 @@
 <title>MOSAIC — Modular Open Science, AI &amp; Collective Intelligence</title>
 <meta name="description" content="MOSAIC is an R&amp;D program to build a new medium for large-scale, AI-augmented networked research.">
 
-<link rel="icon" type="image/svg+xml" href="./assets/mosaic-mark.svg">
+<link rel="icon" type="image/svg+xml" href="./assets/mosaic-logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="512x512" href="./assets/favicon-512.png">
+<link rel="icon" type="image/png" sizes="256x256" href="./assets/favicon-256.png">
 <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 
 <meta property="og:type" content="website">
@@ -34,7 +34,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Source+Sans+3:ital,wght@0,300..600;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
 <style>
   *, *::before, *::after { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; background: oklch(96.2% 0.014 84); }
@@ -51,7 +51,7 @@
     --ground-2: oklch(93.4% 0.016 82);
     --ink: oklch(25% 0.018 258);
     --muted: oklch(45% 0.02 80);
-    --lapis: oklch(39% 0.125 258);
+    --lapis: oklch(54% 0.21 258);
     --terracotta: oklch(50% 0.11 42);
     --gold: oklch(74% 0.12 86);
     --gold-ink: oklch(48% 0.095 80);
@@ -68,7 +68,7 @@
     --ground-2: oklch(25% 0.016 258);
     --ink: oklch(93% 0.012 85);
     --muted: oklch(73% 0.014 82);
-    --lapis: oklch(66% 0.11 258);
+    --lapis: oklch(70% 0.14 258);
     --terracotta: oklch(70% 0.10 42);
     --gold: oklch(80% 0.12 88);
     --gold-ink: oklch(84% 0.11 88);
@@ -80,8 +80,8 @@
     --shadow: 0 1px 2px oklch(0 0 0 / 0.3), 0 8px 24px oklch(0 0 0 / 0.4);
   }
   #mosaic-content {
-    --serif: Newsreader, Georgia, serif;
-    --sans: 'Source Sans 3', system-ui, sans-serif;
+    --serif: Figtree, system-ui, sans-serif;
+    --sans: Figtree, system-ui, sans-serif;
     --gutter: clamp(20px, 5vw, 48px);
     --r: 3px;
     /* Type scale, named by role */
@@ -109,7 +109,7 @@
   }
 
   /* ---- Base ---- */
-  a { color: var(--lapis); text-decoration-thickness: from-font; text-underline-offset: 0.15em; text-decoration-skip-ink: auto; transition: color .15s ease-out; }
+  a { color: var(--lapis); text-decoration: none; transition: color .15s ease-out; }
   a:hover { color: var(--gold-ink); }
   ::selection { background: oklch(74% 0.12 86 / 0.35); }
   #mosaic-content strong { font-weight: 600; color: var(--ink); }
@@ -142,11 +142,12 @@
 
   /* ---- Header ---- */
   .site-header { display: flex; align-items: center; gap: 12px 40px; padding: 18px var(--gutter); max-width: calc(1240px + 2 * var(--gutter)); margin: 0 auto; border-bottom: 1px solid var(--hair); }
-  .wordmark { font-family: var(--serif); font-size: var(--fs-card); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+  .wordmark { display: inline-flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: var(--fs-card); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
   .wordmark:hover { color: var(--ink); }
+  .wordmark-mark { width: 28px; height: 28px; flex: none; }
   .site-nav { flex: 1 1 auto; }
   .site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px clamp(24px, 2.4vw, 28px); }
-  .site-nav a { font-size: var(--fs-ui); }
+  .site-nav a { font-size: var(--fs-ui); font-weight: 600; }
   .theme-toggle { flex: none; background: transparent; border: 1px solid var(--hair); border-radius: var(--r); color: var(--muted); font-family: var(--sans); font-size: var(--fs-small); font-weight: 500; line-height: 1; padding: 8px 12px; cursor: pointer; transition: border-color .15s ease-out, color .15s ease-out; }
   .theme-toggle:hover { border-color: var(--gold); color: var(--gold-ink); }
   @media (max-width: 560px) {
@@ -172,8 +173,8 @@
   .hero-tagline { font-family: var(--serif); font-weight: 300; font-size: var(--fs-tagline); line-height: 1.3; letter-spacing: -0.01em; color: var(--muted); margin: clamp(16px, 3vw, 28px) 0 0; max-width: 26ch; text-wrap: balance; }
   .hero-intro { margin: clamp(28px, 5vw, 44px) 0 0; max-width: 34em; font-size: var(--fs-intro); line-height: 1.6; text-wrap: pretty; }
   .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin: clamp(24px, 4vw, 36px) 0 0; }
-  .cta-secondary { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-ui); }
-  .credit { margin: clamp(32px, 5vw, 48px) 0 0; display: inline-block; font-size: clamp(var(--fs-caption), 1.3vw, var(--fs-small)); line-height: 1.5; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); border-top: 2px solid var(--gold); padding-top: 14px; }
+  .cta-secondary { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-ui); font-weight: 600; }
+  .credit { margin: clamp(32px, 5vw, 48px) 0 0; display: inline-block; font-size: clamp(var(--fs-caption), 1.3vw, var(--fs-small)); font-weight: 500; line-height: 1.5; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); border-top: 2px solid var(--gold); padding-top: 14px; }
 
   /* ---- Buttons ---- */
   .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--lapis); color: var(--ground); font-family: var(--sans); font-weight: 600; font-size: var(--fs-ui); padding: 13px 24px; border-radius: var(--r); text-decoration: none; transition-property: background-color, scale; transition-duration: .18s, .12s; transition-timing-function: ease-out; }
@@ -291,7 +292,7 @@
 <div ref="{{ rootRef }}" data-theme="{{ theme }}" id="mosaic-content">
 
   <header class="site-header">
-    <a class="wordmark" href="#mosaic-hero">Mosaic</a>
+    <a class="wordmark" href="#mosaic-hero"><img class="wordmark-mark" src="./assets/mosaic-logo.svg" alt="" width="28" height="28">Mosaic</a>
     <nav class="site-nav" aria-label="Site sections">
       <ul>
         <li><a href="#team">Team</a></li>
