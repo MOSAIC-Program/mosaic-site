@@ -192,8 +192,10 @@
   }
   svg[data-settle-ready] polygon { opacity: 0; }
   svg[data-settled] polygon { animation: tessera-settle 0.5s ease-out both; }
+  .tess-tile { transform-box: view-box; transition: transform 1.1s cubic-bezier(.22, 1, .36, 1); }
   @media (prefers-reduced-motion: reduce) {
     svg[data-settle-ready] polygon, svg[data-settled] polygon { opacity: var(--op, 1); animation: none; }
+    .tess-tile { transition: none; }
   }
   .band { opacity: 0.16; padding: clamp(24px, 5vh, 56px) 0 clamp(44px, 9vh, 96px); }
 
@@ -543,6 +545,7 @@ class Component extends DCLogic {
     const root = this.rootRef.current;
     if (!root) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.setupTessWave(root);
     const svgs = Array.from(root.querySelectorAll('svg[data-tess]'));
     svgs.forEach(s => s.setAttribute('data-settle-ready', ''));
     if (!('IntersectionObserver' in window)) {
@@ -558,9 +561,72 @@ class Component extends DCLogic {
     this._io = io;
   }
 
+  // Nudges hero tiles away from the pointer with a slow, springy ease so
+  // nearby tesserae ripple outward and drift back once the cursor moves on.
+  setupTessWave(root) {
+    if (!window.matchMedia || !window.matchMedia('(pointer: fine)').matches) return;
+    const svg = root.querySelector('svg[data-tess-interactive]');
+    // The svg itself is bottom/right-anchored and aspect-ratio sized, so its
+    // own box doesn't span the full hero — listen on the section instead so
+    // the pointer is tracked across the whole hero, not just where the svg
+    // happens to render.
+    const zone = root.querySelector('.hero');
+    if (!svg || !zone) return;
+    const tiles = Array.from(svg.querySelectorAll('.tess-tile')).map(el => ({
+      el: el,
+      cx: parseFloat(el.getAttribute('data-cx')),
+      cy: parseFloat(el.getAttribute('data-cy')),
+      active: false
+    }));
+    const RADIUS = 260, STRENGTH = 22;
+    const pt = svg.createSVGPoint();
+    let raf = null, lastEvent = null;
+
+    const update = () => {
+      raf = null;
+      if (!lastEvent) return;
+      const ctm = svg.getScreenCTM();
+      if (!ctm) return;
+      pt.x = lastEvent.clientX; pt.y = lastEvent.clientY;
+      const p = pt.matrixTransform(ctm.inverse());
+      tiles.forEach(t => {
+        const dx = t.cx - p.x, dy = t.cy - p.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < RADIUS) {
+          const power = 1 - dist / RADIUS;
+          const push = power * power * STRENGTH;
+          const angle = Math.atan2(dy, dx);
+          t.el.style.transform = 'translate(' + (Math.cos(angle) * push).toFixed(2) + 'px, ' + (Math.sin(angle) * push).toFixed(2) + 'px) scale(' + (1 + power * 0.12).toFixed(3) + ')';
+          t.active = true;
+        } else if (t.active) {
+          t.el.style.transform = '';
+          t.active = false;
+        }
+      });
+    };
+    const onMove = e => {
+      lastEvent = e;
+      if (raf == null) raf = requestAnimationFrame(update);
+    };
+    const onLeave = () => {
+      lastEvent = null;
+      tiles.forEach(t => { if (t.active) { t.el.style.transform = ''; t.active = false; } });
+    };
+    zone.addEventListener('pointermove', onMove);
+    zone.addEventListener('pointerleave', onLeave);
+    this._tessCleanup = () => {
+      zone.removeEventListener('pointermove', onMove);
+      zone.removeEventListener('pointerleave', onLeave);
+      if (raf != null) cancelAnimationFrame(raf);
+    };
+  }
+
   componentDidUpdate() { this.applyTheme(); }
 
-  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._tessCleanup) this._tessCleanup();
+  }
 
   rng(seed) {
     let a = seed >>> 0;
@@ -576,8 +642,9 @@ class Component extends DCLogic {
   // data-tess hook that componentDidMount uses for the settle animation.
   mosaic(o) {
     const cols = o.cols, rows = o.rows, cell = o.cell || 26, gap = o.gap == null ? 5 : o.gap;
-    const jitter = o.jitter == null ? 0.13 : o.jitter, rot = o.rot == null ? 6 : o.rot;
+    const jitter = o.jitter == null ? 0 : o.jitter, rot = o.rot == null ? 0 : o.rot;
     const animate = o.animate !== false;
+    const interactive = !!o.interactive;
     const rand = this.rng(o.seed || 7);
     const W = cols * cell, H = rows * cell;
     const kids = [];
@@ -604,10 +671,18 @@ class Component extends DCLogic {
             animationDelay: Math.min(0.4, delayRand * 0.1 + wave * 0.5).toFixed(3) + 's'
           };
         }
-        kids.push(React.createElement('g', {
+        const cx = x + w / 2, cy = y + h / 2;
+        const gProps = {
           key: c + '_' + r,
-          transform: 'rotate(' + rr.toFixed(2) + ' ' + (x + w / 2).toFixed(1) + ' ' + (y + h / 2).toFixed(1) + ')'
-        }, React.createElement('polygon', polyProps)));
+          transform: 'rotate(' + rr.toFixed(2) + ' ' + cx.toFixed(1) + ' ' + cy.toFixed(1) + ')'
+        };
+        if (interactive) {
+          gProps.className = 'tess-tile';
+          gProps['data-cx'] = cx.toFixed(1);
+          gProps['data-cy'] = cy.toFixed(1);
+          gProps.style = { transformOrigin: cx.toFixed(1) + 'px ' + cy.toFixed(1) + 'px' };
+        }
+        kids.push(React.createElement('g', gProps, React.createElement('polygon', polyProps)));
       }
     }
     const svgProps = {
@@ -617,6 +692,7 @@ class Component extends DCLogic {
       style: Object.assign({ display: 'block', width: '100%', height: 'auto' }, o.style || {})
     };
     if (animate) svgProps['data-tess'] = '';
+    if (interactive) svgProps['data-tess-interactive'] = '';
     return React.createElement('svg', svgProps, kids);
   }
 
@@ -633,7 +709,7 @@ class Component extends DCLogic {
 
   cluster(seed, color) {
     return this.mosaic({
-      cols: 4, rows: 4, cell: 26, gap: 5, seed: seed, rot: 7, animate: false,
+      cols: 4, rows: 4, cell: 26, gap: 5, seed: seed, animate: false,
       keep: (u, v, r) => r < 0.62,
       palette: Array.isArray(color) ? color : [color],
       tileOpacity: (u, v, r) => 0.45 + r * 0.55
@@ -651,7 +727,7 @@ class Component extends DCLogic {
     const toHero = v => v * (HERO_ROWS + BAND_ROWS - 1) / (HERO_ROWS - 1);
     const bandness = vh => Math.max(0, Math.min(1, (vh - 0.92) / 0.12));
     const heroField = this.memo('hero', () => this.mosaic({
-      cols: 34, rows: HERO_ROWS + BAND_ROWS, cell: 34, gap: 6, seed: 20260826, jitter: 0.14, rot: 7,
+      cols: 34, rows: HERO_ROWS + BAND_ROWS, cell: 34, gap: 6, seed: 20260826, interactive: true,
       style: { position: 'absolute', right: 0, bottom: 0, width: 'max(100%, 1100px)', height: 'auto' },
       keep: (u, v, r) => {
         const vh = toHero(v), b = bandness(vh);
@@ -682,7 +758,7 @@ class Component extends DCLogic {
     }));
 
     const interlock = this.memo('interlock', () => this.mosaic({
-      cols: 48, rows: 3, cell: 26, gap: 5, seed: 903, rot: 7, animate: false,
+      cols: 48, rows: 3, cell: 26, gap: 5, seed: 903, animate: false,
       keep: (u, v, r) => r < 0.86 * d,
       palette: (u, v, r) => {
         const phase = (u * 6 + v * 1.2) % 3;
