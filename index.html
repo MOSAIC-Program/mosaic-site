@@ -294,8 +294,10 @@
   .connect .prose p { margin-bottom: clamp(28px, 5vw, 40px); }
   .site-footer { padding: clamp(28px, 5vh, 44px) var(--gutter) clamp(40px, 7vh, 64px); border-top: 1px solid var(--hair); }
   .site-footer .wrap { display: flex; justify-content: center; }
-  .footer-link { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: var(--fs-small); }
+  .footer-link { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); font-size: var(--fs-ui); font-weight: 600; }
   .footer-link:hover { color: var(--gold-ink); }
+  .footer-link-icon { display: inline-flex; align-items: center; justify-content: center; flex: none; color: var(--muted); transition: color .15s ease-out; }
+  .footer-link:hover .footer-link-icon { color: var(--gold-ink); }
 </style>
 </helmet>
 <div ref="{{ rootRef }}" data-theme="{{ theme }}" id="mosaic-content">
@@ -504,7 +506,7 @@
   <footer class="site-footer">
     <div class="wrap wrap--narrow">
       <a href="mailto:hello@mosaic-program.org" class="footer-link">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+        <span class="footer-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg></span>
         hello@mosaic-program.org
       </a>
     </div>
