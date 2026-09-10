@@ -190,8 +190,8 @@
 
   /* ---- Tessera (hero only animates) ---- */
   @keyframes tessera-settle {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: var(--op, 1); transform: none; }
+    from { opacity: 0; }
+    to { opacity: var(--op, 1); }
   }
   svg[data-settle-ready] polygon { opacity: 0; }
   svg[data-settled] polygon { animation: tessera-settle 0.5s ease-out both; }
