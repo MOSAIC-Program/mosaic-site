@@ -110,7 +110,7 @@ Discourse Graphs are deployed across over a dozen research labs, with hundreds o
 [![Cosmik](./images/partners/cosmik_logo-full.svg)](https://cosmik.network/)
 
 ### card2-body
-We co-founded Cosmik as an R&D lab for collective sensemaking tools. Comsik is building a curation network for researchers called [Semble](https://semble.so/). Semble already has more than a thousand users and an active integration with Discourse Graphs, providing early evidence for social apps as a strong adoption driver for networked research.
+We co-founded Cosmik as an R&D lab for collective sensemaking tools. Cosmik is building a curation network for researchers called [Semble](https://semble.so/). Semble already has more than a thousand users and an active integration with Discourse Graphs, providing early evidence for social apps as a strong adoption driver for networked research.
 
 ### card3-title
 [![MIRA](./images/partners/mira-logo.svg)](https://www.mira.science/)
