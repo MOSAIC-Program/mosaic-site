@@ -287,7 +287,10 @@
   }
 
   /* ---- Connect / footer ---- */
-  .connect { text-align: center; padding-bottom: clamp(72px, 14vh, 140px); }
+  .connect { padding-bottom: clamp(72px, 14vh, 140px); }
+  .connect-band { position: relative; overflow: hidden; background: var(--ground-2); border-radius: 20px; padding: clamp(48px, 9vh, 88px) var(--gutter); text-align: center; }
+  .connect-tiles { position: absolute; top: -8%; right: -4%; width: clamp(120px, 18vw, 200px); opacity: 0.4; pointer-events: none; transform: rotate(-8deg); }
+  .connect-copy { position: relative; z-index: 1; }
   .connect .prose p { margin-bottom: clamp(28px, 5vw, 40px); }
   .site-footer { padding: clamp(28px, 5vh, 44px) var(--gutter) clamp(40px, 7vh, 64px); border-top: 1px solid var(--hair); }
   .site-footer .wrap { display: flex; justify-content: center; }
@@ -488,10 +491,13 @@
   </section>
 
   <section id="connect" class="section section--index connect">
-    <div class="measure measure--short prose">
-      <h2 class="h2-index anchor-heading">Connect<a href="#connect" class="anchor-link" aria-label="Link to this section">#</a></h2>
-      <p>Interested in MOSAIC? Want to partner with us or support the program? We’d love to hear from you.</p>
-      <a href="https://forms.mosaic-program.org/connect" target="_blank" rel="noopener noreferrer" class="btn">Get in touch</a>
+    <div class="connect-band wrap wrap--narrow">
+      <div class="connect-tiles" aria-hidden="true">{{ connectTiles }}</div>
+      <div class="connect-copy measure measure--short prose">
+        <h2 class="h2-index anchor-heading">Connect<a href="#connect" class="anchor-link" aria-label="Link to this section">#</a></h2>
+        <p>Interested in MOSAIC? Want to partner with us or support the program? We’d love to hear from you.</p>
+        <a href="https://forms.mosaic-program.org/connect" target="_blank" rel="noopener noreferrer" class="btn">Get in touch</a>
+      </div>
     </div>
   </section>
 
@@ -705,7 +711,8 @@ class Component extends DCLogic {
       interlock: interlock,
       conv1: this.memo('c1', () => this.cluster(101, [lapis, lapis, grout])),
       conv2: this.memo('c2', () => this.cluster(202, [terra, terra, grout])),
-      conv3: this.memo('c3', () => this.cluster(303, [gold, gold, grout]))
+      conv3: this.memo('c3', () => this.cluster(303, [gold, gold, grout])),
+      connectTiles: this.memo('connect-tiles', () => this.cluster(4242, [lapis, terra, gold, grout]))
     };
   }
 }
